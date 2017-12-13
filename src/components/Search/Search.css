@@ -1,0 +1,40 @@
+.search {
+    width: 12.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchbox {
+    border: solid;
+    border-color: silver;
+    border-width: .1vw;
+    background: black;
+    border-radius: 50px;
+    width: 10vw;
+    height: 1.5vw;
+    padding-left: 5%;
+}
+
+.searchbox::placeholder {
+    color: silver;
+    font-family: 'Abel', sans-serif;
+}
+
+.searchbutton {
+    background: black;
+    border: solid;
+    border-color: black;
+    border-width: .1vw;
+    border-radius: 50%;
+    width: 2vw;
+    height: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mag {
+    width: 1vw;
+    height: 1vw;
+}
