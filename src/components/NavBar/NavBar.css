@@ -3,3 +3,9 @@
     width: 40vw;
     justify-content: space-between;
 }
+
+.navlinks {
+    text-decoration: none;
+    color: silver;
+    font-size: 3vh;
+}

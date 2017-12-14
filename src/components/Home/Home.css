@@ -1,0 +1,11 @@
+.landing {
+    color: silver;
+    font-family: 'Abel', sans-serif;
+    font-size: 7vh;
+    position: absolute;
+    top: 39vh;
+    left: 33vw;
+    height: 40vh;
+    width: 40%;
+    font-weight: lighter;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Inspiration extends Component {
+export default class BrandStory extends Component {
     render() {
         return (
             <div>

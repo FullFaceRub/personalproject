@@ -3,7 +3,10 @@ import './reset.css';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
-import logo from './images/logo.png'
+import logo from './images/logo.png';
+import routes from './routes';
+
+
 
 class App extends Component {
   render() {
@@ -15,6 +18,7 @@ class App extends Component {
           <Search/>
         </header>
         <section className="mainbody">
+        {routes}
         </section>
         <footer className="mainfooter">
         </footer>
