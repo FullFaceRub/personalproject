@@ -2,13 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = new express();
 const port = process.env.PORT || 8080;
-const controller = require('./bwcontroller');
+const controller = require('./controllers/bwcontroller');
 const cors = require('cors');
 const massive = require('massive');
+require('dotenv').config();
 
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.get('/api/products/:category', controller.getCategory);
+// app.get('/api/products/:category/:productid', controller.getProduct);
+// app.get('/api/product/:productname', controller.searchProduct)
 
 
 //***************************************************************************/

@@ -2,23 +2,20 @@ import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import './Products.css';
 
-export default class About extends Component {
+
+
+export default class Products extends Component {
+    componentDidMount(){
+        console.log(this.props)
+    }
     render() {
         return (
-            <div className="page">
-                <div className='subnav'>
-                    <Link to='/speakers' className='subnavlinks'>Speakers</Link>
-                    <Link to='/wireless-speakers' className='subnavlinks'>Wireless Speakers</Link>
-                    <Link to='/headphones' className='subnavlinks'>Headphones</Link>
-                    <Link to='/car-audio' className='subnavlinks'>Car Audio</Link>
-                </div>
-                <div className='main'>
-                    <Switch>
-                        <Route path='/speakers' component={Speakers} />
-                        <Route path='/wireless-speakers' component={WirelessSpeakers} />
-                        <Route path='/headphones' component={Headphones} />
-                        <Route path='/car-audio' component={CarAudio} />
-                    </Switch>
+            <div className="ppage">
+                <div className='pmain'>
+                    <div className="pcategory" id="speakers"><Link to='/products/1'>Speakers</Link></div>
+                    <div className="pcategory" id="wireless"><Link to='/products/2'>Wireless Speakers</Link></div>
+                    <div className="pcategory" id="headphones"><Link to='/products/3'>Headphones</Link></div>
+                    <div className="pcategory" id="car"><Link to='/products/4'>Car Audio</Link></div>
                 </div>
             </div>
         )

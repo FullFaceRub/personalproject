@@ -1,42 +1,71 @@
-.page {
+.ppage {
     position: relative;
 }
 
-.subnav {
-    width: 15vw;
+.psubnav {
+    width: 30vw;
     display: flex;
     justify-content: space-between;
     position: absolute;
     top: -11vh;
-    left: 32.5vw;
+    left: 43.5vw;
 }
 
-.subnavlinks {
+.pcategory {
     text-decoration: none;
     color: silver;
     font-family: 'Abel', sans-serif;
-    font-size: 2.5vh;
-}
-
-.main {
+    font-size: 5vh;
+    width: 40vw;
+    height: 30vh;
+    border: solid;
+    border-width: .5vw;
+    border-color: silver;
+    margin: 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
 }
 
-.content {
-    height: 50vh;
-    width: 50vw;
-    line-height: 4vh;
+.pmain {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    margin-top: 10vh;
+    text-decoration: none;
+    color: silver;
 }
 
-.contenttitle {
-    font-size: 4vh;
-    width: 50vw;
-    align-content: left;
+.pmain a {
+    color: silver;
+    text-decoration: none;
+}
+
+#speakers {
+    background: url("../../images/speakers.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#wireless {
+    background: url("../../images/wireless.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#headphones {
+    background: url("../../images/headphones.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#car {
+    background: url("../../images/caraudio2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
