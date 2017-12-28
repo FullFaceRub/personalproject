@@ -1,2 +1,2 @@
 select * from products
-where product_category = $1
+where category_id = $1

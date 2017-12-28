@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../About.css';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 export default class BrandStory extends Component {
     render() {

@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
     getCategory: (req,res)=>{
         const category = req.params.category;
         const db = req.app.get('db');
@@ -9,11 +9,10 @@ module.export = {
     },
 
     getProduct: (req,res)=>{
-        const category = req.params.category;
         const product = req.params.productid;
         const db = req.app.get('db');
 
-        db.readsingleproduct([product, category]).then((product)=>{
+        db.readsingleproduct([product]).then((product)=>{
             res.status(200).send(product)
         })
     },
