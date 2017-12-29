@@ -23,7 +23,6 @@ export default class CategoryView extends Component {
     render() {
 
         let list = this.state.category.map((e, i) => {
-            console.log(e);
             return <Link key={i} to={`/product/${e.product_id}`} className="ptile">
                 <img src={e.product_image} alt={e.product_name} className="ptileimg" />
                 <div className="ptilebody">
@@ -31,8 +30,7 @@ export default class CategoryView extends Component {
                     <p>{e.product_description}</p>
                 </div>
                 <div className="ptileprice">
-                    <h1>{e.product_price}</h1>
-                    <button>Add to cart</button>
+                    <h1>${e.product_price}</h1>
                 </div>
             </Link>
         })

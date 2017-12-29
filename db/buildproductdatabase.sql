@@ -179,4 +179,164 @@ values
 ,'CCM Cinema 7 is a down-firing, in-ceiling speaker with drivers angled to the mounting surface so they can be directed to the listener.'
 ,'2-way in-ceiling system, 1" Nautilusswirl loaded aluminium dome tweeter,7" Blue Kevlar cone bass/midrange'
 ,'11.4" x 4.5"'
-,699.99,1)
+,699.99,1),
+('CCM682'
+,'A high performance ceiling-mount speaker featuring a 200mm (8in) Kevlar cone bass/midrange driver with a rigid die-cast chassis, and a Nautilus swirl-loaded aluminium dome tweeter.'
+,'2-way in-ceiling system, 1in Nautilus swirl loaded aluminum dome tweeter, 8in Blue Kevlar cone bass/midrange. Features a  larger magnet and voice coil than CCMC83.'
+,'9.9 x 4.8'
+,599.99,1),
+('CCM683'
+,'The CCM683 features a 200mm (8in) Kevlar® cone bass/midrange driver and a Nautilus swirl-loaded aluminium dome tweeter that pivots for adjustable off-axis treble response.'
+,'2-way in-celing system, 1in Nautilus Swirl loaded aluminum dome tweeter, 8in Blue Kevlar cone bass/midrange'
+,'9.9 x 4.8'
+,424.99,1),
+('CCM684'
+,'The entry point among the CI 600 range of 8in in-ceiling speakers, the two-way CCM684 features a 200mm (8in) woven glass fibre cone bass/midrange driver and a soft dome tweeter.'
+,'2-way in-ceiling system, 1in soft dome tweeter, 8in Black Glassfibre cone bass/midrange'
+,'9.9 x 4.8'
+,299.99,1),
+('CCM662'
+,'The top 6in in-ceiling speaker in the CI 600 series. This high-performance speaker features a Nautilus swirl-loaded 25mm (1in) aluminium dome tweeter that pivots for adjustable off-axis treble response.'
+,'2-way in-ceiling system, 1in Nautilus swirl loaded aluminum dome tweeter, 6in Blue Kevlar cone bass/ midrange. Features a larger magnet and voice coil than CCM663.'
+,'8 x 4.8'
+,499.99,1),
+('CCM663'
+,'This high-performance 6in in-ceiling speaker features a Nautilus swirl-loaded 25mm (1in) aluminium dome tweeter that pivots for adjustable off-axis treble response.'
+,'2-way in-ceiling system,  1in Nautilus swirl loaded aluminum  dome tweeter, 6in Blue Kevlar  cone bass/midrange '
+,'8 x 4.8'
+,349.99,1),
+('CCM664'
+,'The CCM664 features an adjustable, tilt-offset 25mm (1in) soft dome tweeter, and a 150mm (6in) woven glassfibre bass/midrange driver.'
+,'2-way in-ceiling system, 1in soft dome tweeter, 6in Black Glassfiber cone bass/midrange'
+,'8 x 4.8'
+,274.99,1),
+('CCM665'
+,'The entry-point in the CI600 in-ceiling range, the CCM665 is perfect for smaller listening areas like bathrooms or kitchens.'
+,'2-way in-ceiling system, 1in  soft dome tweeter, 6in Black Glassfiber cone bass/ midrange '
+,'8 x 4.8'
+,199.99,1),
+('CCM632'
+,'CCM632 is an in-ceiling speaker designed to deliver a full range of sound at high quality in a very small space.'
+,'Single driver in-ceiling system, 3in paper cone full-range'
+,'4.5 x 3.4'
+,249.99,1),
+('CCM382'
+,'The CCM382 is a two way, in-ceiling loudspeaker.'
+,'2-way in-ceiling system  1in soft dome tweeter  8in polypropylene cone bass/midrang'
+,'9.8 x 3'
+,199.99,1),
+('CCM362'
+,'The CCM362 is a two way, in-ceiling loudspeaker.'
+,'2-way in-ceiling system 1in soft dome tweeter 6in polypropylene cone bass/midrange'
+,'7.9 x 2.7'
+,149.99,1),
+('CWM8.3'
+,'CWM 8.3 is a three-way, in-wall loudspeaker. It features a Carbon Braced Tweeter, a 5in Kevlar FST drive unit and two 7in carbon fibre reinforced Rohacell low frequency drivers.'
+,'3-way in-wall system. 1" Diamond Dome tweeter w/ Nautilus tube,  5" Continuum FST midrange driver,  7" Aerofoil Bass drivers, Aluminium  mini baffle can be turned through  90 degrees. Flowport.'
+,'34" x 9.4" x 3.4"'
+,4499.99,1),
+('CWM8.5'
+,'CWM8.5 is a two-way in-wall speaker. It features a decoupled Diamond dome 25mm (1 inch) tweeter and a single 180mm (7-inch) bass/mid Continuum driver.'
+,'2-way in-wall system. 1" Diamond Dome tweeter w/ Nautilus tube, 7" Continuum bass/midrange driver w/ anti-resonance plug. Flowport.'
+,'15.5" x 9.09" x 3.4"'
+,2499.99,1),
+('CWM7.3'
+,'Our top range in-wall speaker, the CWM7.3 is a mighty three-way unit bringing together tried and tested audiophile technologies with new innovations specially developed for custom installation'
+,'3-way in-wall system, 1" Nautilus  Tube loaded soft dome tweeter, 4"  Blue Kevlar cone FST midrange,  2 x 6" paper Kevlar cone bass drivers'
+,'28" x 9.9" x 3.6"'
+,1499.99,1),
+('CWM7.4'
+,'The mid-point in the CI700 range of in-wall speakers, the CWM7.4 has a more manageable size than the CWM7.3, but comes with a similarly impressive set of features.'
+,'2-way in-wall system, 1" Nautilus Tube loaded soft dome tweeter, 6" Blue Kevlar cone bass/midrange'
+,'15.4" x 8.9" x 3.6"'
+,799.99,1),
+('CWM7.5'
+,'The entry-point in our CI700 in-wall speaker range, the CWM7.5 is the smallest of the three speakers but comes packed with superb, reference-quality features.'
+,'2-way in-wall system, 1" Nautilus Tube loaded soft dome tweeter, 5" Blue Kevlar cone bass/midrange'
+,'13" x 7.4" x 3.6"'
+,599.99,1),
+('CWM Cinema 7'
+,'CWM Cinema 7 contains four top-quality drivers and a tweeter. It is designed for use as a front left, centre or right speaker - for serious power and audio quality, with simple installation.'
+,'2 1/2-way in-wall system, 1" Nautilus Tube loaded aluminum dome tweet, 4" Blue Kevlar cone bass/midrange, 4" paper cone bass'
+,'5.8" x 23.5" x 3.1"'
+,849.99,1),
+('CWM663'
+,'The CWM663 features a 150mm (6in) blue Kevlar® bass/midrange driver housed in a die-cast chassis, providing extra rigidity for cleaner, faster bass.'
+,'2-way in-wall system, 1"  Nautilus tube loaded aluminum dome tweeter, 6" Blue Kevlar cone bass/midrange'
+,'10.9" x 7.2" x 3.3"'
+,374.99,1),
+('CWM664'
+,'The CWM664 has the same basic features and dimensions as the CWM663, but uses a soft dome Nautilus tube-loaded tweeter'
+,'2-way in-wall system, 1" soft dome tweeter, 6" Black Glassfibre cone bass/midrange'
+,'10.9" x 7.2" x 3.3"'
+,274.99,1),
+('CWM652'
+,'The CWM652 features a 130mm (5in) blue Kevlar® bass/midrange driver is housed in a die-cast chassis, providing extra rigidity for cleaner, faster bass.'
+,'2-way in-wall system, 1" Nautilus Tube loaded aluminum dome tweeter, 5" Blue Kevlar cone bass/midrange'
+,'8.9" x 6" x 3.3"'
+,274.99,1),
+('CWM362'
+,'The CWM362 is a two way, in-wall loudspeaker.'
+,'2-way in-wall system, 1" soft dome tweeter, 6" polypropylene cone bass/ midrange'
+,'10.9" x 7.2" x 2.5"'
+,199.99,1),
+('P9 Signature'
+,'P9 Signature, our largest over-ear headphone, exemplifies all of the acoustic and design innovation skills we have amassed in our 50 year journey. P9 Signature raises the bar for performance from a mobile headphone.'
+,'50th Anniversary, wired luxurious  over ear headphone with noise  isolation.'
+,899.99,3),
+('PX'
+,'Noise cancelling wireless headphones. PX combines incredible sound with adaptable noise cancellation, 22-hour battery life and intuitive controls that respond naturally to your behaviour. '
+,'Wireless headphone with  adaptive noise cancellation and  Mobile App. Responds naturally  to listener. Bluetooth aptX HD  streaming, 22 hour battery life'
+,399.99,3),
+('P5 Wireless'
+,'On-ear wireless headphones which offer an enticing blend of great sound and stunning design all wrapped in luxurious black leather. Super cool and super sounding.'
+,'Wireless on-ear headphone with Bluetooth aptX streaming and noise isolation. 17 hour battery life.'
+,299.99,3),
+('P3 Series 2'
+,'Lightweight and foldable, providing size defying bass and musical dynamics. P3 Series 2 will fit easily into your life and coat pocket.'
+,'Wired light weight on-ear  headphone with premium leather  finish and noise isolation.'
+,149.99,3),
+('C5 Series 2'
+,'Ergonomic in-ear headphones. Powerful bass and a user adjustable design make C5 Series 2 one of best lightweight audio experiences around.'
+,'Wired in-ear headphone with secure loop design, tangle-free cable, noise isolation.'
+,149.99,3),
+('BMW 7 Series'
+,'The Bowers & Wilkins Diamond Surround Sound System has been designed exclusively for the BMW 7 Series. This sound system is the first of its kind, featuring studio-level acoustic technologies never before seen in a commercial car including Diamond Dome tweeters. The result is a truly revelatory audio experience – and a giant leap forward for in-car sound.'
+,'The Diamond Surround Sound System is perfectly integrated into the cabin of the new BMW 7 Series – acoustically and aesthetically. Tuned by the people responsible for the 800 Series Diamond, it utilises stainless steel speaker grilles, which have audio-ideal Fibonacci patterned holes that allow more sound to pass through and blend into the luxurious interior. Subtle illumination on the Mirror-sail tweeters is designed to highlight the Diamond tweeter and the Nautilus spiral technology.'
+,4),
+('BMW 5 Series'
+,'With the audio system for the BMW 5 Series, our singular goal was to produce a sound experience that feels as though you are there with the artist in the studio. From the outset, the engineering teams from BMW and Bowers & Wilkins joined forces to create an audio system featuring advanced acoustic technologies such as Diamond tweeters, which works in harmony with the car’s interior architecture to deliver an incredibly realistic, completely enveloping audio experience.'
+,'The Diamond Surround Sound System is perfectly integrated into the cabin of the new BMW 5 Series – acoustically and aesthetically. Tuned by the people responsible for the 800 Series Diamond louspeakers, it utilises stainless steel speaker grilles, which have audio-ideal Fibonacci patterned holes that allow more sound to pass through whilst blending into the luxurious interior. Subtle illumination on the sail tweeters is designed to highlight the Diamond tweeter and the Nautilus spiral technology.'
+,4),
+('Maserati Quattroporte'
+,'For nearly a century, the trident marque has been a symbol of uncompromising automotive excellence, and the latest in Maserati’s line of luxury saloon cars delivers on that promise. It also offers a truly immersive in-car acoustic experience, thanks to the Bowers & Wilkins premium surround system. Extraordinary sound for an extraordinary car.'
+,'The premium surround system raises the bar for acoustic detail and clarity in a Maserati. What’s more, the system’s architecture and advanced digital features produce truly immersive surround sound from any position in the car. So nobody misses out on the experience.'
+,4),
+('Maserati Ghibli'
+,'This elegantly styled sport sedan features is at the forefront of a new breed of Maserati automobile, writing the next chapter of the legend. It comes with the option of the Bowers & Wilkins premium surround system, carefully tuned to match the character of the car’s internal architecture, and deliver true sound on the move.'
+,'The premium surround system raises the bar for acoustic detail and clarity in a Maserati. What’s more, the system’s architecture and advanced digital features produce truly immersive surround sound from any position in the car. So nobody misses out on the experience.'
+,4),
+('Maserati Levante'
+,'The Levante is the first of its kind: a Maserati SUV. Every detail of the optional Bowers & Wilkins Surround Sound system is designed and acoustically optimised specifically for the Levante’s larger cabin space, following an intensive engineering and design collaboration between Maserati and Bowers & Wilkins teams. It delivers uncompromised, best-in-class results.'
+,'The Surround Sound System raises the bar for acoustic detail and clarity in a Maserati. What’s more, the system’s architecture and advanced digital features produce truly immersive surround sound from any position in the car. So nobody misses out on the experience.'
+,4),
+('McLaren 540C'
+,'The McLaren 540C boasts the best power-to-weight ratio of any sports car in its sector and is capable of an amazing 124.0mph in 10.5 seconds. It also boasts a class-leading sound system in the shape of the new Bowers & Wilkins Audio System, featuring Tweeter-on-Top technology.'
+,'It’s the subtle nuances that make all the difference to audio within a sports car. The McLaren 540C’s audio system delivers spine-tingling detail and spaciousness thanks to tried and tested technologies, including Bowers & Wilkins Tweeter-on-Top technology. A Tweeter-on-Top centre speaker minimises acoustic reflection from the windscreen and removes cabinet coloration, resulting in a sound that’s more detailed and true to life.'
+,4),
+('McLaren 570S'
+,'The initial car in McLaren’s exciting Sports Series range, the 570S Coupé is equally at home on the track as it is on the open road. The addictive driving experience is complemented by the Bowers & Wilkins Audio System, a 12-speaker system including a center-mounted Tweeter-on-Top high-frequency driver.'
+,'It’s the subtle nuances that make all the difference to audio within a sports car. The McLaren 570S audio system delivers spine-tingling detail and spaciousness thanks to tried and tested technologies, including Bowers & Wilkins Tweeter-on-Top technology. A Tweeter-on-Top centre speaker minimises acoustic reflection from the windscreen and removes cabinet coloration, resulting in a sound that’s more detailed and true to life.'
+,4),
+('McLaren 570GT'
+,'The McLaren 570GT is the most refined and road-biased McLaren yet, designed with a focus on day-to-day usability and long distance comfort. The luxurious interior of the 570GT is the perfect home for the Bowers & Wilkins Audio System, where its pristine surround sound perfectly meets the entertainment needs of the longer drives that the 570GT is designed for.'
+,'It’s the subtle nuances that make all the difference to audio within a sports car. The McLaren 570GTs audio system delivers spine-tingling detail and spaciousness thanks to tried and tested technologies, including Bowers & Wilkins Tweeter-on-Top technology. A Tweeter-on-Top centre speaker minimises acoustic reflection from the windscreen and removes cabinet coloration, resulting in a sound that’s more detailed and true to life.'
+,4),
+('Volvo XC90'
+,'Attention to detail. It’s what raises Volvo’s latest luxury SUV above the competition. You could say the same for the XC90’s in-car audio system. Featuring core Bowers & Wilkins technologies, the system is designed to convey the detail in music – creating a sound that feels more spacious and lifelike than ever.'
+,'The larger space inside the XC90 allows the sound to immerse you in a way that smaller cars struggle with. The 19‐speaker XC90 system is powered by a high-quality Class D amplifier, and seamlessly integrated into the cabin architecture. Each speaker has been positioned for optimum acoustics and the most immersive sound possible. Wherever you choose to sit.'
+,4),
+('Volvo S90'
+,'The S90 combines cutting edge technology and quality materials, beautifully put together with attention to detail and consideration. The same is true of its Bowers & Wilkins Audio system: high-end speaker technologies and materials are carefully located in the luxurious interior. The result: an executive car, with pristine sound.'
+,'The 19-speaker S90 system is powered by a high-quality Class D amplifier, and seamlessly integrated into the cabin architecture. Each speaker has been positioned for optimum acoustics and tuned by expert ears to produce the most realistic immersive sound possible. This intensive collaboration between Volvo Cars and Bowers & Wilkins engineers creates fantastic sound, wherever you sit in the car.'
+,4)
