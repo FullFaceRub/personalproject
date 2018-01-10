@@ -340,3 +340,220 @@ values
 ,'The S90 combines cutting edge technology and quality materials, beautifully put together with attention to detail and consideration. The same is true of its Bowers & Wilkins Audio system: high-end speaker technologies and materials are carefully located in the luxurious interior. The result: an executive car, with pristine sound.'
 ,'The 19-speaker S90 system is powered by a high-quality Class D amplifier, and seamlessly integrated into the cabin architecture. Each speaker has been positioned for optimum acoustics and tuned by expert ears to produce the most realistic immersive sound possible. This intensive collaboration between Volvo Cars and Bowers & Wilkins engineers creates fantastic sound, wherever you sit in the car.'
 ,4)
+
+update products
+set product_image = '/images/1.jpg'
+where product_id = 1;
+update products
+set product_image = '/images/2.png'
+where product_id = 2;
+update products
+set product_image = '/images/3.png'
+where product_id = 3;
+update products
+set product_image = '/images/4.png'
+where product_id = 4;
+update products
+set product_image = '/images/5.png'
+where product_id = 5;
+update products
+set product_image = '/images/6.png'
+where product_id = 6;
+update products
+set product_image = '/images/7.png'
+where product_id = 7;
+update products
+set product_image = '/images/8.png'
+where product_id = 8;
+update products
+set product_image = '/images/9.png'
+where product_id = 9;
+update products
+set product_image = '/images/10.jpg'
+where product_id = 10;
+update products
+set product_image = '/images/11.jpg'
+where product_id = 11;
+update products
+set product_image = '/images/12.jpg'
+where product_id = 12;
+update products
+set product_image = '/images/13.jpg'
+where product_id = 13;
+update products
+set product_image = '/images/14.jpg'
+where product_id = 14;
+update products
+set product_image = '/images/15.jpg'
+where product_id = 15;
+update products
+set product_image = '/images/16.jpg'
+where product_id = 16;
+update products
+set product_image = '/images/17.jpg'
+where product_id = 17;
+update products
+set product_image = '/images/18.jpg'
+where product_id = 18;
+update products
+set product_image = '/images/19.jpg'
+where product_id = 19;
+update products
+set product_image = '/images/20.jpg'
+where product_id = 20;
+update products
+set product_image = '/images/21.jpg'
+where product_id = 21;
+update products
+set product_image = '/images/22.jpg'
+where product_id = 22;
+update products
+set product_image = '/images/23.jpg'
+where product_id = 23;
+update products
+set product_image = '/images/24.jpg'
+where product_id = 24;
+update products
+set product_image = '/images/25.jpg'
+where product_id = 25;
+update products
+set product_image = '/images/26.jpg'
+where product_id = 26;
+update products
+set product_image = '/images/27.jpg'
+where product_id = 27;
+update products
+set product_image = '/images/28.jpg'
+where product_id = 28;
+update products
+set product_image = '/images/29.png'
+where product_id = 29;
+update products
+set product_image = '/images/30.jpg'
+where product_id = 30;
+update products
+set product_image = '/images/31.jpg'
+where product_id = 31;
+update products
+set product_image = '/images/32.jpg'
+where product_id = 32;
+update products
+set product_image = '/images/33.jpg'
+where product_id = 33;
+update products
+set product_image = '/images/34.jpg'
+where product_id = 34;
+update products
+set product_image = '/images/35.jpg'
+where product_id = 35;
+update products
+set product_image = '/images/36.jpg'
+where product_id = 36;
+update products
+set product_image = '/images/37.jpg'
+where product_id = 37;
+update products
+set product_image = '/images/38.jpg'
+where product_id = 38;
+update products
+set product_image = '/images/39.jpg'
+where product_id = 39;
+update products
+set product_image = '/images/40.jpg'
+where product_id = 40;
+update products
+set product_image = '/images/41.jpg'
+where product_id = 41;
+update products
+set product_image = '/images/42.jpg'
+where product_id = 42;
+update products
+set product_image = '/images/43.jpg'
+where product_id = 43;
+update products
+set product_image = '/images/44.jpg'
+where product_id = 44;
+update products
+set product_image = '/images/45.jpg'
+where product_id = 45;
+update products
+set product_image = '/images/46.jpg'
+where product_id = 46;
+update products
+set product_image = '/images/47.jpg'
+where product_id = 47;
+update products
+set product_image = '/images/48.jpg'
+where product_id = 48;
+update products
+set product_image = '/images/49.jpg'
+where product_id = 49;
+update products
+set product_image = '/images/50.jpg'
+where product_id = 50;
+update products
+set product_image = '/images/51.jpg'
+where product_id = 51;
+update products
+set product_image = '/images/52.jpg'
+where product_id = 52;
+update products
+set product_image = '/images/53.jpg'
+where product_id = 53;
+update products
+set product_image = '/images/54.jpg'
+where product_id = 54;
+update products
+set product_image = '/images/55.jpg'
+where product_id = 55;
+update products
+set product_image = '/images/56.jpg'
+where product_id = 56;
+update products
+set product_image = '/images/57.jpg'
+where product_id = 57;
+update products
+set product_image = '/images/58.png'
+where product_id = 58;
+update products
+set product_image = '/images/59.png'
+where product_id = 59;
+update products
+set product_image = '/images/60.png'
+where product_id = 60;
+update products
+set product_image = '/images/61.png'
+where product_id = 61;
+update products
+set product_image = '/images/62.jpg'
+where product_id = 62;
+update products
+set product_image = '/images/'
+where product_id = 63;
+update products
+set product_image = '/images/'
+where product_id = 64;
+update products
+set product_image = '/images/'
+where product_id = 65;
+update products
+set product_image = '/images/'
+where product_id = 66;
+update products
+set product_image = '/images/'
+where product_id = 67;
+update products
+set product_image = '/images/'
+where product_id = 68;
+update products
+set product_image = '/images/'
+where product_id = 69;
+update products
+set product_image = '/images/'
+where product_id = 70;
+update products
+set product_image = '/images/'
+where product_id = 71;
+update products
+set product_image = '/images/'
+where product_id = 72;

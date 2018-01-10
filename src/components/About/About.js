@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import BrandStory from './BrandStory/BrandStory';
 import Contact from './Contact/Contact';
-import './About.css';
 
 export default class About extends Component {
     render() {

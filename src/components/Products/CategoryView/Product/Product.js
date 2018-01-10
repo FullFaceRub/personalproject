@@ -6,7 +6,7 @@ export default class Product extends Component {
         super();
 
         this.state = {
-            product: {}
+            product: []
         }
     }
 
@@ -21,24 +21,26 @@ export default class Product extends Component {
     }
 
     render() {
-        // let productMap = this.state.product.map((e, i) => {
-        //     return <div key={i} className="productdetail"> 
-        //         <img src={e.product_image} alt={e.product_name} className="productdetailimg" />
-        //         <div className="productdetailbody">
-        //             <h1>{e.product_name}</h1>
-        //             <p>{e.product_description}</p>
-        //             <p>Features: {e.product_features}</p>
-        //             <p>Dimensions: {e.product_dimensions}</p>
-        //             <div className="productdetailprice">
-        //                 <h1>${e.product_price}</h1>
-        //                 <button>Add to cart</button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // })
+        let productMap = this.state.product.map((e, i) => {
+            return <div key={i} className="productdetail">
+                <div>
+                    <h1>{e.product_name}</h1>
+                    <img src={e.product_image} alt={e.product_name} className="productdetailimg" />
+                </div>
+                <div className="productdetailbody">
+                    <p>Overview: {e.product_description}</p>
+                    <p>Features: {e.product_features}</p>
+                    <p>Dimensions: {e.product_dimensions}</p>
+                    <div className="productdetailprice">
+                        <h1>${e.product_price}</h1>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        })
         return (
             <div>
-                {/* {productMap} */}
+                {productMap}
             </div>
         )
     }

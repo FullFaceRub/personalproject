@@ -3,6 +3,7 @@ import axios from 'axios';
 // import ProductTile from './ProductTile';
 import { Link } from 'react-router-dom';
 
+
 export default class CategoryView extends Component {
     constructor() {
         super();
@@ -21,7 +22,7 @@ export default class CategoryView extends Component {
         )
     }
     render() {
-
+        
         let list = this.state.category.map((e, i) => {
             return <Link key={i} to={`/product/${e.product_id}`} className="ptile">
                 <img src={e.product_image} alt={e.product_name} className="ptileimg" />

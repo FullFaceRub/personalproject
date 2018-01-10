@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Search.css';
 import mag from '../../images/magglass.png'
 
 class Search extends Component{
