@@ -11,8 +11,7 @@ class NavBar extends Component {
                     <Link to='/about' className="navlinks">About<div className="line"></div></Link>
                     <Link to='/inspiration' className="navlinks">Inspiration<div className="line"></div></Link>
                     <Link to='/products' className="navlinks">Products<div className="line"></div></Link>
-                    <Link to='/login' className="navlinks">Login<div className="line"></div></Link>
-                    {/* <div className="placeholder">Placeholder</div> */}
+                    <a href='http://localhost:1337/auth' className="navlinks">Login<div className="line"></div></a>
 
                 </nav>
         

@@ -24,5 +24,12 @@ module.exports = {
         db.searchreadproduct([product]).then((product)=>{
             res.status(200).send(product)
         })
-    }    
+    },
+    
+    getCustomer: (req,res)=>{
+        
+        const db = req.app.get('db');
+
+        db.readcustomer([])
+    }
 }

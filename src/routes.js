@@ -6,6 +6,7 @@ import Products from './components/Products/Products';
 import Product from './components/Products/CategoryView/Product/Product';
 import Inspiration from './components/Inspiration/Inspiration';
 import CategoryView from './components/Products/CategoryView/CategoryView';
+import axios from 'axios';
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route distinct path='/product/:product' component={Product}/>
         <Route path='/inspiration' component={Inspiration}/>
         <Route path='/products/:category' component={CategoryView} />
+        {/* <Route path='/login' render={axios.get('/login')}/> */}
     </Switch>
 )
