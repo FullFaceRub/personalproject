@@ -1,2 +1,2 @@
 select * from customers
-where auth_id=$1
+where customer_id=$1

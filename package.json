@@ -20,6 +20,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
+    "redux-promise-middleware": "^5.0.0",
     "url-loader": "^0.6.2"
   },
   "scripts": {
@@ -42,5 +43,5 @@
     "url": "https://github.com/FullFaceRub/personalproject/issues"
   },
   "homepage": "https://github.com/FullFaceRub/personalproject#readme",
-  "proxy": "http://localhost:1337"
+  "proxy": "http://localhost:8080"
 }

@@ -24,7 +24,7 @@ export default class Product extends Component {
         let productMap = this.state.product.map((e, i) => {
             return <div key={i} className="productdetail">
                 <div>
-                    <h1>{e.product_name}</h1>
+                    <h1 className="productname">{e.product_name}</h1>
                     <img src={e.product_image} alt={e.product_name} className="productdetailimg" />
                 </div>
                 <div className="productdetailbody">

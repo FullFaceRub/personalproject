@@ -27,7 +27,7 @@ export default class CategoryView extends Component {
             return <Link key={i} to={`/product/${e.product_id}`} className="ptile">
                 <img src={e.product_image} alt={e.product_name} className="ptileimg" />
                 <div className="ptilebody">
-                    <h1>{e.product_name}</h1>
+                    <h1>{e.product_name}<div className="line"></div></h1>
                     <p>{e.product_description}</p>
                 </div>
                 <div className="ptileprice">

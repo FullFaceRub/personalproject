@@ -8,10 +8,10 @@ export default class Products extends Component {
         return (
             <div className="ppage">
                 <div className='pmain'>
-                    <Link to='/products/1'><div className="pcategory" id="speakers">Speakers</div></Link>
-                    <Link to='/products/2'><div className="pcategory" id="wireless">Wireless Speakers</div></Link>
-                    <Link to='/products/3'><div className="pcategory" id="headphones">Headphones</div></Link>
-                    <Link to='/products/4'><div className="pcategory" id="car">Car Audio</div></Link>
+                    <Link to='/products/1' className="pcategory" id="speakers"><div className="pnavlinks">Speakers<div className="line"></div></div></Link>
+                    <Link to='/products/2' className="pcategory" id="wireless"><div className="pnavlinks">Wireless Speakers<div className="line"></div></div></Link>
+                    <Link to='/products/3' className="pcategory" id="headphones"><div className="pnavlinks">Headphones<div className="line"></div></div></Link>
+                    <Link to='/products/4' className="pcategory" id="car"><div className="pnavlinks">Car Audio<div className="line"></div></div></Link>
                 </div>
             </div>
         )
