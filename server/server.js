@@ -64,6 +64,7 @@ app.get('/auth/callback', passport.authenticate('auth0',{
     failureRedirect: 'http://localhost:3000/',
 }))
 app.get('/auth/me', (req,res)=>{
+    console.log(req.user);
     if(!req.user){
         res.status(404).send('User not found.');
     } else {

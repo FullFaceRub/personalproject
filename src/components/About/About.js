@@ -8,9 +8,9 @@ export default class About extends Component {
         return (
             <div className="page">
                 <div className='subnav'>
-                    <Link to='/about' className='subnavlinks'>About</Link>
-                    <Link to='/about/brandstory' className='subnavlinks'>Brand Story</Link>
-                    <Link to='/about/contact' className='subnavlinks'>Contact</Link>
+                    <Link to='/about' className='subnavlinks'>About<div className="line"></div></Link>
+                    <Link to='/about/brandstory' className='subnavlinks'>Brand Story<div className="line"></div></Link>
+                    <Link to='/about/contact' className='subnavlinks'>Contact<div className="line"></div></Link>
                 </div>
                 <div className='main'>
                     <Switch>
