@@ -12,14 +12,12 @@ import {Login,AccountLink} from '../Account/AccountLink';
 class NavBar extends Component {
 
     componentDidMount() {
-        console.log(this.props)
         this.props.getUserInfo()
     }
 
 
     render() {
         const user = this.props.user
-        console.log(user)
 
         let accountLink = null;
         

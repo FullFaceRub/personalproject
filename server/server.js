@@ -64,7 +64,6 @@ app.get('/auth/callback', passport.authenticate('auth0',{
     failureRedirect: 'http://localhost:3000/',
 }))
 app.get('/auth/me', (req,res)=>{
-    console.log(req.user);
     if(!req.user){
         res.status(404).send('User not found.');
     } else {
@@ -77,7 +76,9 @@ app.get('/auth/logout', function(req,res){
 })
 app.get('/api/products/:category', controller.getCategory);
 app.get('/api/product/:productid', controller.getProduct);
-app.get('/api/product/:productname', controller.searchProduct)
+app.get('/api/product/:productname', controller.searchProduct);
+app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);
+app.get('/api/cart/:user', controller.getCart)
 
 
 //***************************************************************************/

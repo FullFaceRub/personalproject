@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
+// import aos from 'aos';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
 import logo from './images/logo.png';
@@ -9,9 +10,11 @@ import routes from './routes';
 
 
 class App extends Component {
+  
   render() {
     return (
       <div className="app">
+        {/* {aos.init()} */}
         <header className="mainheader">
           <img src={logo} alt="logo" className="logo"/>
           <NavBar/>

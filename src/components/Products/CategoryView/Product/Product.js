@@ -1,27 +1,48 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getUserInfo, getProduct} from '../../../../ducks/reducer';
 
-export default class Product extends Component {
+class Product extends Component {
     constructor() {
         super();
 
         this.state = {
-            product: []
+            quantity: null
         }
+        this.addToCart=this.addToCart.bind(this);
+        this.inputQuantity=this.inputQuantity.bind(this);
     }
 
     componentDidMount() {
+        this.props.getUserInfo();
         let product = this.props.match.params.product
-        axios.get('/api/product/' + product).then(res => {
-            this.setState({
-                product: res.data
-            })
-            console.log(this.state.product);
+        this.props.getProduct(product);
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+    }
+
+    inputQuantity(e){
+        this.setState({
+            quantity:e
+        })
+    }
+
+    addToCart(){
+        let product = this.props.match.params.product;
+        let user = this.props.user;
+        let quantity = this.state.quantity;
+        axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
+        this.setState({
+            quantity: null
         })
     }
 
     render() {
-        let productMap = this.state.product.map((e, i) => {
+        console.log(this.props.product);
+        let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">
                 <div>
                     <h1 className="productname">{e.product_name}</h1>
@@ -33,7 +54,8 @@ export default class Product extends Component {
                     <p>Dimensions: {e.product_dimensions}</p>
                     <div className="productdetailprice">
                         <h1>${e.product_price}</h1>
-                        <button>Add to cart</button>
+                        <input placeholder="Insert Quantity" onChange={e=>this.inputQuantity(e.target.value)}></input>
+                        <button className="addToCart" onClick={this.addToCart}>Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -45,3 +67,12 @@ export default class Product extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        user: state.user,
+        product: state.product
+    }
+}
+
+export default connect(mapStateToProps, {getUserInfo, getProduct})(Product);
