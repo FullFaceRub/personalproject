@@ -284,6 +284,8 @@ body {
   border: solid;
   border-width: 0px;
   border-color: silver;
+  animation-name: fadeIn;
+  animation-duration: .6s;
 }
 
 .ptile:hover {
@@ -494,18 +496,132 @@ body {
   float: right;
 }
 
-.checkoutbutton {
-  width: 70%;
-  display:flex;
+.checkout {
+  width: 57.5%;
+  display: flex;
   flex-direction: row-reverse;
-  justify-content: space-around;
 }
 
-.checkoutbutton div {
-  width: 50%;
+.checkoutbutton {
+  background: black;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  border: solid;
+  border-color: silver;
+  color: silver;
+  border-width: 1px;
+  font-size: 20px;
 }
 
 .cartfooter {
   height: 100px;
 }
 
+.inspiration {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 100px;
+  background: black;
+  width: 80%;
+}
+
+.inspirationbrick {
+  max-height: 200px;
+  margin-top: 25px;
+  animation-name: fadeIn;
+  animation-duration: .6s;
+}
+
+.inspirationouter {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close {
+  background: black;
+  border: none;
+  color: silver;
+  width: 10px;
+}
+
+.closeouter {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.field {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.field input {
+  border: solid;
+  border-color: silver;
+  border-width: 1px;
+  background: black;
+  border-radius: 50px;
+  width: 10vw;
+  height: 1.5vw;
+  padding-left: 5px;
+  margin-left: 10px;
+  color: silver;
+}
+
+.field input:focus {
+  color: silver;
+}
+
+.field h5 {
+  width: 80px;
+}
+
+.subtitle {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.subCheckOutForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+#name {
+  width: 250px;
+}
+
+#address{
+  width: 375px;
+}
+#city{
+  width: 150px;
+}
+#state{
+  width: 125px;
+}
+
+#zipcode{
+  width: 75px;
+}
+
+.checkOutForm {
+  margin-top: 35px;
+}
+
+.paybuttonouter {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.paybutton {
+  margin-top: 15px;
+  width: 150px;
+  display: flex;
+}

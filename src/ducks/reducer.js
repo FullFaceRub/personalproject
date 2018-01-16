@@ -3,8 +3,9 @@ import axios from 'axios';
 //Data
 const initialState = {
     user: {},
-    cart: [],
-    product: []
+    cart: [[],[]],
+    product: [],
+    // total: {}
 }
 
 //Types
@@ -13,6 +14,7 @@ const GET_CART = 'GET_CART'
 const GET_PRODUCT = 'GET_PRODUCT'
 const DECREMENT_CART = 'DECREMENT_CART'
 const INCREMENT_CART = 'INCREMENT_CART'
+const GET_CART_TOTAL = 'GET_CART_TOTAL'
 
 
 //Action Builder
@@ -42,13 +44,27 @@ export function getProduct(product){
 
 export function getCart(user){
     
-    let cartData = axios.get(`/api/cart/${user}`).then(res=>{
-        return res.data;
+    let itemData = axios.get(`/api/cart/${user}`)
+    let totalData = axios.get(`/api/cartTotal/${user}`)
+    let cartData = axios.all([itemData, totalData]).then(res=>{
+        console.log(res);
+        return [res[0].data, res[1].data]
     })
 
     return {
         type: GET_CART,
         payload: cartData
+    }
+}
+
+export function getCartTotal(user){
+    let totalData = axios.get(`/api/cartTotal/${user}`).then(res=>{
+        return res.data
+    })
+
+    return {
+        type: GET_CART_TOTAL,
+        payload: totalData
     }
 }
 
@@ -62,7 +78,7 @@ export function incrementCart(customer,product,quantity){
 
     return {
         type: INCREMENT_CART,
-        payload: incData
+        payload: inc
     }
 }
 
@@ -74,7 +90,7 @@ export function decrementCart(customer,product,quantity){
 
     return {
         type: DECREMENT_CART,
-        payload: decData
+        payload: dec
     }
 }
 
@@ -91,6 +107,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { cart:action.payload})
         case DECREMENT_CART + '_FULFILLED':
             return Object.assign({}, state, {cart:action.payload})
+        case GET_CART_TOTAL + '_FULFILLED':
+            return Object.assign({}, state, {total:action.payload})
         default:
             return state
     }

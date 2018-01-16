@@ -5,15 +5,9 @@ import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import stripe from '../../stripeKey';
+import Checkout from './Checkout';
 
 class Cart extends Component {
-    constructor(){
-        super();
-
-        this.state = {
-            cartTotal: 0
-        }
-    }
 
     componentDidMount() {
         let user = this.props.user.customer_id;
@@ -21,24 +15,17 @@ class Cart extends Component {
         this.props.getCart(user);
     }
 
-    onToken = (token) => {
-        token.card = void 0;
-        axios.post('http://localhost:8080/api/payment', { token, amount: 1000 }).then(response => {
-            alert('we are in business')
-        });
-    }
+    
 
     render() {
-        // let stripePubKey = process.env.STRIPE_PUB_KEY
         let cart = this.props.cart;
-        let total = this.state.cartTotal;
+        let total = cart[1].length < 1 ? 0 : cart[1][0].total;
         let cartMap;
         let cartDisplay;
-        if (cart.length < 1) {
+        if (cart[0].length < 1) {
             cartMap = <h1>Your cart is empty or you just need to Login</h1>
         } else {
-            cartMap = cart.map((e, i) => {
-                total = total + (e.product_price * e.quantity)
+            cartMap = cart[0].map((e, i) => {
                 return <div key={i} className="carttile">
                     <Link to={`/product/${e.product_id}`} className="carttilebody">
                         <img src={e.product_image} alt={e.product_name} className="ptileimg" />
@@ -86,15 +73,10 @@ class Cart extends Component {
                     <div></div>
                     <div></div>
                 </div>
-                <div className="checkoutbutton">
-                <StripeCheckout
-                    name={'Your Order'}
-                    description={'Please enter your card information:'}
-                    token={this.onToken}
-                    stripeKey={stripe.pub_key}
-                    amount={total*100}
-                />
-                <div></div>
+                <div className="checkout">
+                    <Checkout />
+                    <div></div>
+                    <div></div>
                 </div>
                 <div className="cartfooter">
                 </div>
@@ -107,8 +89,7 @@ class Cart extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        cart: state.cart
-
+        cart: state.cart,
     }
 }
 
