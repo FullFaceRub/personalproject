@@ -22,3 +22,4 @@ yarn-error.log*
 
 # secret_sauce
 .env
+stripeKey.js

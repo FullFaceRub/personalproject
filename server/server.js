@@ -9,6 +9,7 @@ const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -57,7 +58,7 @@ passport.deserializeUser((id,done)=>{
         return done(null,user[0])
     })
 })
-
+//Auth endpoints
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0',{
     successRedirect: `http://localhost:3000/`,
@@ -74,11 +75,15 @@ app.get('/auth/logout', function(req,res){
     req.logOut();
     res.redirect('http://localhost:3000/')
 })
+//Payment endpoint
+app.post('/api/payment', controller.payment);
+//Endpoints
 app.get('/api/products/:category', controller.getCategory);
 app.get('/api/product/:productid', controller.getProduct);
 app.get('/api/product/:productname', controller.searchProduct);
 app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);
-app.get('/api/cart/:user', controller.getCart)
+app.get('/api/cart/:user', controller.getCart);
+app.put('/api/cart/:user/:productid/:quantity', controller.changeQuantity);
 
 
 //***************************************************************************/

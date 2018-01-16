@@ -14,7 +14,6 @@ class Account extends Component {
 
     render() {
         const user = this.props.user;
-        console.log(user);
 
         if (!user) {
             return (

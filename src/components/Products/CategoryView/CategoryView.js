@@ -38,6 +38,7 @@ export default class CategoryView extends Component {
         return (
             <div className="pmain">
                 {list}
+                <div className="cartfooter"></div>
             </div>
         )
     }

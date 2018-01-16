@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCart, getUserInfo } from '../../ducks/reducer';
+import { getCart, getUserInfo, incrementCart, decrementCart } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+import stripe from '../../stripeKey';
 
 class Cart extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            cartTotal: 0
+        }
+    }
 
     componentDidMount() {
         let user = this.props.user.customer_id;
@@ -10,24 +21,84 @@ class Cart extends Component {
         this.props.getCart(user);
     }
 
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('http://localhost:8080/api/payment', { token, amount: 1000 }).then(response => {
+            alert('we are in business')
+        });
+    }
+
     render() {
-        // console.log(this.state.cartProducts)
-        let cart = this.props.cart
-        console.log(cart)
+        // let stripePubKey = process.env.STRIPE_PUB_KEY
+        let cart = this.props.cart;
+        let total = this.state.cartTotal;
         let cartMap;
-            if (cart.length < 1) {
-                console.log('hit')
-                cartMap =  <h1>Your cart is empty</h1>
-            } else {
-                cartMap = cart.map((e,i)=>{
-                    return <img src={e.product_image} alt={e.product_name} />
-                })
-            }
+        let cartDisplay;
+        if (cart.length < 1) {
+            cartMap = <h1>Your cart is empty or you just need to Login</h1>
+        } else {
+            cartMap = cart.map((e, i) => {
+                total = total + (e.product_price * e.quantity)
+                return <div key={i} className="carttile">
+                    <Link to={`/product/${e.product_id}`} className="carttilebody">
+                        <img src={e.product_image} alt={e.product_name} className="ptileimg" />
+                        <h1>{e.product_name}</h1>
+                    </Link>
+                    <div className="ptilebody" id="cart">
+                        <h1>{e.quantity}</h1>
+                        <br />
+                        <div className="addremove">
+                            <button onClick={() => this.props.incrementCart(e.customer_id, e.product_id, e.quantity)}>Add</button>
+                            <button onClick={() => this.props.decrementCart(e.customer_id, e.product_id, e.quantity)}>Remove</button>
+                        </div>
+                    </div>
+                    <div className="ptileprice">
+                        <h1>${e.product_price}</h1>
+                    </div>
+                </div>
+            })
+        }
+
+        // if (cart.length < 1) {
+        //     cartDisplay = { cartMap }
+        // } else {
+        //     cartDisplay = <div> <div className="topoftable">
+        //         <h1>Product:</h1>
+        //         <h1>Quantity:</h1>
+        //         <h1>Price:</h1>
+        //     </div>
+        //         {cartMap}
+        //         <h1 className="carttotal">Your cart Total: ${cartTotal}</h1>
+        //     </div>
         // }
 
         return (
-            <div>
+            <div className="cartmain">
+                <div className="topoftable">
+                    <h1>Product:</h1>
+                    <h1>Quantity:</h1>
+                    <h1>Price:</h1>
+                </div>
                 {cartMap}
+                <div className="carttotal">
+                    <h1 >${total}</h1>
+                    <h1>Your cart Total:</h1>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="checkoutbutton">
+                <StripeCheckout
+                    name={'Your Order'}
+                    description={'Please enter your card information:'}
+                    token={this.onToken}
+                    stripeKey={stripe.pub_key}
+                    amount={total*100}
+                />
+                <div></div>
+                </div>
+                <div className="cartfooter">
+                </div>
+                {/* {cartDisplay} */}
             </div>
         )
     }
@@ -41,4 +112,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCart, getUserInfo })(Cart)//add getCart to export 
+export default connect(mapStateToProps, { getCart, getUserInfo, incrementCart, decrementCart })(Cart)//add getCart to export 

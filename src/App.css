@@ -146,7 +146,7 @@ body {
 .searchbox {
   border: solid;
   border-color: silver;
-  border-width: .1vw;
+  border-width: 1px;
   background: black;
   border-radius: 50px;
   width: 10vw;
@@ -158,6 +158,10 @@ body {
   color: silver;
   font-family: 'Abel', sans-serif;
   font-size: 1.25vw;
+}
+
+.searchbox:focus {
+  color: silver;
 }
 
 .searchbutton {
@@ -402,3 +406,106 @@ body {
 .cart {
   height: 25px;
 }
+
+.carttile {
+  width: 70%;
+  height: 22vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5vh;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.carttile:nth-child(even){
+  background-color: rgba(255,255,255,0.2);
+}
+
+.carttile:nth-child(odd) button {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.cartmain {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.cartmain a {
+  text-decoration: none;
+  color: silver;
+}
+
+#cart {
+  flex-direction: row;
+  width: 125px;
+
+}
+
+#cart h1 {
+  font-size: 20px;
+}
+
+.carttilebody {
+  display: flex;
+  align-items: center;
+}
+
+.addremove {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 55px;
+}
+
+.addremove button {
+  background: black;
+  height: 25px;
+  width: 75px;
+  border-radius: 15px;
+  border: solid;
+  border-color: silver;
+  color: silver;
+  border-width: 1px;
+}
+
+.topoftable {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  padding: 2.5vh;
+  margin-top: -25px;
+}
+
+.carttotal {
+  width: 70%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.cartotal h1 {
+  float: right;
+}
+
+.checkoutbutton {
+  width: 70%;
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.checkoutbutton div {
+  width: 50%;
+}
+
+.cartfooter {
+  height: 100px;
+}
+

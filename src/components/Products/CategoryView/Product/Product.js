@@ -8,7 +8,7 @@ class Product extends Component {
         super();
 
         this.state = {
-            quantity: null
+            quantity: 0
         }
         this.addToCart=this.addToCart.bind(this);
         this.inputQuantity=this.inputQuantity.bind(this);
@@ -21,7 +21,6 @@ class Product extends Component {
     }
     
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
     }
 
     inputQuantity(e){
@@ -36,12 +35,11 @@ class Product extends Component {
         let quantity = this.state.quantity;
         axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
         this.setState({
-            quantity: null
+            quantity: 0
         })
     }
 
     render() {
-        console.log(this.props.product);
         let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">
                 <div>
@@ -54,7 +52,7 @@ class Product extends Component {
                     <p>Dimensions: {e.product_dimensions}</p>
                     <div className="productdetailprice">
                         <h1>${e.product_price}</h1>
-                        <input placeholder="Insert Quantity" onChange={e=>this.inputQuantity(e.target.value)}></input>
+                        <input placeholder="Insert Quantity" value={this.state.quantity} onChange={e=>this.inputQuantity(e.target.value)}></input>
                         <button className="addToCart" onClick={this.addToCart}>Add to cart</button>
                     </div>
                 </div>

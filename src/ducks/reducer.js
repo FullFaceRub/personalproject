@@ -11,6 +11,8 @@ const initialState = {
 const GET_USER_INFO = 'GET_USER_INFO'
 const GET_CART = 'GET_CART'
 const GET_PRODUCT = 'GET_PRODUCT'
+const DECREMENT_CART = 'DECREMENT_CART'
+const INCREMENT_CART = 'INCREMENT_CART'
 
 
 //Action Builder
@@ -50,6 +52,32 @@ export function getCart(user){
     }
 }
 
+export function incrementCart(customer,product,quantity){
+    console.log(quantity);
+    let inc=Number(quantity)+1;
+    let incData = axios.put(`/api/cart/${customer}/${product}/${inc}`).then(res=>{
+        console.log(res.data)
+        return res.data
+    })
+
+    return {
+        type: INCREMENT_CART,
+        payload: incData
+    }
+}
+
+export function decrementCart(customer,product,quantity){
+    let dec=Number(quantity)-1;
+    let decData = axios.put(`/api/cart/${customer}/${product}/${dec}`).then(res=>{
+        return res.data
+    })
+
+    return {
+        type: DECREMENT_CART,
+        payload: decData
+    }
+}
+
 //Switch
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -59,6 +87,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { cart:action.payload})
         case GET_PRODUCT + '_FULFILLED':
             return Object.assign({}, state, { product:action.payload})
+        case INCREMENT_CART + '_FULFILLED':
+            return Object.assign({}, state, { cart:action.payload})
+        case DECREMENT_CART + '_FULFILLED':
+            return Object.assign({}, state, {cart:action.payload})
         default:
             return state
     }
