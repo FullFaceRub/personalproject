@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getSearch} from '../../ducks/reducer';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
 
 class SearchResults extends Component {
 
@@ -11,6 +12,8 @@ class SearchResults extends Component {
     }
 
     componentWillReceiveProps(nextProps){
+        let nextQuery = nextProps.match.params.param
+        this.props.getSearch(nextQuery)
     }
 
     render (){
@@ -41,4 +44,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getSearch})(SearchResults);
+export default withRouter(connect(mapStateToProps, {getSearch})(SearchResults));
