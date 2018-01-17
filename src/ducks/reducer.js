@@ -22,7 +22,6 @@ const GET_REDIRECT = 'GET_REDIRECT'
 //Action Builder
 export function getRedirect(url) {
     let redirectData = url
-    console.log(redirectData);
 
     return {
         type: GET_REDIRECT,

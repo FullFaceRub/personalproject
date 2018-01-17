@@ -2,7 +2,6 @@ const passport = require('passport');
 
 module.exports = {
     NoRedirect: (req, res, next) => {
-        console.log(req.query.redirectto);
         req.session.redirect = req.query.redirectto
         next();
     },

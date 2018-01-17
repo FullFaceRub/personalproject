@@ -19,7 +19,6 @@ class NavBar extends Component {
     render() {
         const user = this.props.user
         const redirect = this.props.redirect
-        console.log(redirect)
 
         let accountLink = null;
 

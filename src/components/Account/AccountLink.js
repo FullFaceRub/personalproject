@@ -4,7 +4,6 @@ import cart from '../../images/carticon.png';
 
 
 export function Login (props) {
-    console.log(props.url)
 
         return (
             <a href={process.env.REACT_APP_LOGIN+'?redirectto='+props.url} className="navlinks">Login<div className="line"></div></a>
