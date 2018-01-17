@@ -10,30 +10,15 @@ import { Login, AccountLink } from '../Account/AccountLink';
 // import UserProfile from 
 
 class NavBar extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            redirect: props.redirect
-        }
-    }
 
     componentDidMount() {
         this.props.getUserInfo()
     }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            redirect: nextProps.redirect
-        },()=>{
-            console.log(this.state.redirect)
-        })
-    }
-
 
     render() {
         const user = this.props.user
-        const redirect = this.state.redirect
+        const redirect = this.props.redirect
         console.log(redirect)
 
         let accountLink = null;
