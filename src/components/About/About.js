@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import BrandStory from './BrandStory/BrandStory';
 import Contact from './Contact/Contact';
+import {connect} from 'react-redux';
+import {getRedirect} from '../../ducks/reducer';
 
-export default class About extends Component {
+class About extends Component {
+
+    componentDidMount(){
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
+    }
+
     render() {
         return (
             <div className="page">
@@ -26,3 +34,11 @@ export default class About extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        redirect: state.redirect
+    }
+}
+
+export default connect(mapStateToProps, {getRedirect})(About);

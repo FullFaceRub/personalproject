@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getRedirect} from '../../ducks/reducer';
 
-export default class Inspiration extends Component {
+class Inspiration extends Component {
     constructor(){
         super();
 
@@ -15,7 +17,10 @@ export default class Inspiration extends Component {
                 inspiration:res.data
             })
         })
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
     }
+
     render() {
         let bricks = this.state.inspiration.map((e,i)=>{
             return <img key={i} src={e.inspiration_url} alt={e.inspiration_id} className="inspirationbrick" />
@@ -30,3 +35,11 @@ export default class Inspiration extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        redirect: state.redirect
+    }
+}
+
+export default connect(mapStateToProps, {getRedirect})(Inspiration);

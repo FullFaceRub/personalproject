@@ -523,10 +523,10 @@ body {
 }
 
 .inspiration {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
   background: radial-gradient( closest-corner at 100% 100%, rgba(000,000,000,0.8),rgba(000,000,000,0.8)), url("./images/marble.jpg");
   background-repeat: repeat;
   background-size: 500px 500px;
@@ -534,25 +534,35 @@ body {
   background-repeat: repeat;
   background-size: 626px 417px; */
   width: 85%;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-top: 100px;
+  column-count: 3;
+  column-gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
 }
 
 .inspirationbrick {
-  max-height: 200px;
-  margin-top: 25px;
+  /* max-height: 200px; */
+  margin-top: 10px;
   animation-name: fadeIn;
   animation-duration: .6s;
+  display: inline-block;
+  margin: 0 0 10px;
+  max-height: 500px;
+  width: 100%;
 }
 
-.inspirationouter {
+/* .inspirationouter {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
-}
+} */
 
 .close {
   background: black;

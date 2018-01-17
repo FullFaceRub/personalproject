@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getRedirect} from '../../ducks/reducer';
 
+class Products extends Component {
 
+    componentDidMount(){
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
+    }
 
-export default class Products extends Component {
     render() {
         return (
             <div className="ppage">
@@ -17,3 +23,11 @@ export default class Products extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        redirect: state.redirect
+    }
+}
+
+export default connect(mapStateToProps, {getRedirect})(Products);

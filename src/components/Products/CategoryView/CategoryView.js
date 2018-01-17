@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import ProductTile from './ProductTile';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getRedirect} from '../../../ducks/reducer';
 
 
-export default class CategoryView extends Component {
+class CategoryView extends Component {
     constructor() {
         super();
 
@@ -12,6 +14,7 @@ export default class CategoryView extends Component {
             category: []
         }
     }
+
     componentDidMount() {
         let products = this.props.match.params.category
         axios.get('/api/products/' + products).then(res => {
@@ -20,7 +23,10 @@ export default class CategoryView extends Component {
             })
         }
         )
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
     }
+
     render() {
         
         let list = this.state.category.map((e, i) => {
@@ -43,3 +49,11 @@ export default class CategoryView extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    return {
+        redirect: state.redirect
+    }
+}
+
+export default connect(mapStateToProps, {getRedirect})(CategoryView);

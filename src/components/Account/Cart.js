@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCart, getUserInfo, incrementCart, decrementCart } from '../../ducks/reducer';
+import { getCart, getUserInfo, incrementCart, decrementCart, getRedirect } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import Checkout from './Checkout';
 
@@ -8,6 +8,14 @@ class Cart extends Component {
 
     componentDidMount() {
         let user = this.props.user.customer_id;
+        this.props.getUserInfo();
+        this.props.getCart(user);
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
+    }
+
+    componentWillReceiveProps(nextProps){
+        let user = nextProps.user.customer_id;
         this.props.getUserInfo();
         this.props.getCart(user);
     }
@@ -84,7 +92,8 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         cart: state.cart,
+        redirect: state.redirect
     }
 }
 
-export default connect(mapStateToProps, { getCart, getUserInfo, incrementCart, decrementCart })(Cart)//add getCart to export 
+export default connect(mapStateToProps, { getCart, getUserInfo, incrementCart, decrementCart, getRedirect })(Cart)//add getCart to export 
