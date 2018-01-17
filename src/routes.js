@@ -19,6 +19,6 @@ export default (
         <Route path='/inspiration' component={Inspiration}/>
         <Route path='/products/:category' component={CategoryView} />
         <Route path='/account/cart' component={Cart}/>
-        {/* <Route path='/search/results/:param' component={SearchResults} /> */}
+        <Route exact path='/search/results/:param' component={SearchResults} />
     </Switch>
 )

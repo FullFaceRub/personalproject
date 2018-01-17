@@ -18,7 +18,7 @@ module.exports = {
     },
 
     searchProduct: (req, res) => {
-        const product = req.params.name;
+        const product = '%'+req.params.query+'%';
         const db = req.app.get('db');
 
         db.searchreadproduct([product]).then((product) => {
@@ -60,7 +60,6 @@ module.exports = {
         const product = req.params.productid;
         const quantity = req.params.quantity;
         const db = req.app.get('db');
-        console.log(user);
 
         db.changeQuantity([user, product, quantity]).then((quantity) => {
             res.status(200).send(quantity)

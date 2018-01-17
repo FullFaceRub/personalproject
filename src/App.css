@@ -152,6 +152,7 @@ body {
   width: 10vw;
   height: 1.5vw;
   padding-left: 5%;
+  color: silver;
 }
 
 .searchbox::placeholder {
@@ -546,7 +547,12 @@ body {
   background: black;
   border: none;
   color: silver;
-  width: 10px;
+  margin-right: 25px;
+  height: 15px;
+}
+
+.close:hover .line {
+  width: 100%;
 }
 
 .closeouter {

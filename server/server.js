@@ -78,7 +78,6 @@ app.get('/auth/logout', function (req, res) {
 //Payment endpoint
 app.post('/api/payment', function (req, res, next) {
     //convert amount to pennies
-    console.log(req.body);
     const amountArray = req.body.amount.toString().split('');
     const pennies = [];
     for (var i = 0; i < amountArray.length; i++) {
@@ -116,7 +115,7 @@ app.post('/api/payment', function (req, res, next) {
 //Endpoints
 app.get('/api/products/:category', controller.getCategory);
 app.get('/api/product/:productid', controller.getProduct);
-app.get('/api/product/:productname', controller.searchProduct);
+app.get('/api/products/search/:query', controller.searchProduct);
 app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);
 app.get('/api/cart/:user', controller.getCart);
 app.get('/api/cartTotal/:user', controller.getCartTotal);

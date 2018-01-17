@@ -5,7 +5,7 @@ const initialState = {
     user: {},
     cart: [[],[]],
     product: [],
-    // total: {}
+    search: []
 }
 
 //Types
@@ -14,7 +14,7 @@ const GET_CART = 'GET_CART'
 const GET_PRODUCT = 'GET_PRODUCT'
 const DECREMENT_CART = 'DECREMENT_CART'
 const INCREMENT_CART = 'INCREMENT_CART'
-const GET_CART_TOTAL = 'GET_CART_TOTAL'
+const GET_SEARCH = 'GET_SEARCH'
 
 
 //Action Builder
@@ -47,7 +47,6 @@ export function getCart(user){
     let itemData = axios.get(`/api/cart/${user}`)
     let totalData = axios.get(`/api/cartTotal/${user}`)
     let cartData = axios.all([itemData, totalData]).then(res=>{
-        console.log(res);
         return [res[0].data, res[1].data]
     })
 
@@ -57,24 +56,12 @@ export function getCart(user){
     }
 }
 
-export function getCartTotal(user){
-    let totalData = axios.get(`/api/cartTotal/${user}`).then(res=>{
-        return res.data
-    })
-
-    return {
-        type: GET_CART_TOTAL,
-        payload: totalData
-    }
-}
-
 export function incrementCart(customer,product,quantity){
-    console.log(quantity);
     let inc=Number(quantity)+1;
-    let incData = axios.put(`/api/cart/${customer}/${product}/${inc}`).then(res=>{
-        console.log(res.data)
-        return res.data
-    })
+    // let incData = axios.put(`/api/cart/${customer}/${product}/${inc}`).then(res=>{
+    //     console.log(res.data)
+    //     return res.data
+    // })
 
     return {
         type: INCREMENT_CART,
@@ -84,13 +71,24 @@ export function incrementCart(customer,product,quantity){
 
 export function decrementCart(customer,product,quantity){
     let dec=Number(quantity)-1;
-    let decData = axios.put(`/api/cart/${customer}/${product}/${dec}`).then(res=>{
-        return res.data
-    })
+    // let decData = axios.put(`/api/cart/${customer}/${product}/${dec}`).then(res=>{
+    //     return res.data
+    // })
 
     return {
         type: DECREMENT_CART,
         payload: dec
+    }
+}
+
+export function getSearch(query){
+    let searchData = axios.get('http://localhost:8080/api/products/search/'+query).then(res=>{
+        return res.data
+    })
+
+    return {
+        type: GET_SEARCH,
+        payload: searchData
     }
 }
 
@@ -107,8 +105,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { cart:action.payload})
         case DECREMENT_CART + '_FULFILLED':
             return Object.assign({}, state, {cart:action.payload})
-        case GET_CART_TOTAL + '_FULFILLED':
-            return Object.assign({}, state, {total:action.payload})
+        case GET_SEARCH + '_FULFILLED':
+            return Object.assign({}, state, {search:action.payload})
         default:
             return state
     }

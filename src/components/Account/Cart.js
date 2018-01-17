@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCart, getUserInfo, incrementCart, decrementCart } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
-import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
-import stripe from '../../stripeKey';
 import Checkout from './Checkout';
 
 class Cart extends Component {
@@ -15,13 +12,10 @@ class Cart extends Component {
         this.props.getCart(user);
     }
 
-    
-
     render() {
         let cart = this.props.cart;
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
         let cartMap;
-        let cartDisplay;
         if (cart[0].length < 1) {
             cartMap = <h1>Your cart is empty or you just need to Login</h1>
         } else {

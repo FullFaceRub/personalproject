@@ -1,2 +1,2 @@
 select * from products
-where name like $1
+where product_name like $1
