@@ -9,6 +9,7 @@ import CategoryView from './components/Products/CategoryView/CategoryView';
 import SearchResults from './components/Search/SearchResults';
 // import OrderHistory from './components/Account/OrderHistory';
 import Cart from './components/Account/Cart';
+import FailedLogin from './components/Account/FailedLogin';
 
 export default (
     <Switch>
@@ -20,5 +21,6 @@ export default (
         <Route path='/products/:category' component={CategoryView} />
         <Route path='/account/cart' component={Cart}/>
         <Route exact path='/search/results/:param' component={SearchResults} />
+        <Route path='/failedlogin' component={FailedLogin}/>
     </Switch>
 )

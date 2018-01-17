@@ -5,7 +5,8 @@ const initialState = {
     user: {},
     cart: [[],[]],
     product: [],
-    search: []
+    search: [],
+    redirect: '/'
 }
 
 //Types
@@ -15,9 +16,20 @@ const GET_PRODUCT = 'GET_PRODUCT'
 const DECREMENT_CART = 'DECREMENT_CART'
 const INCREMENT_CART = 'INCREMENT_CART'
 const GET_SEARCH = 'GET_SEARCH'
+const GET_REDIRECT = 'GET_REDIRECT'
 
 
 //Action Builder
+export function getRedirect(url) {
+    let redirectData = url
+    console.log(redirectData);
+
+    return {
+        type: GET_REDIRECT,
+        payload: redirectData
+    }
+}
+
 export function getUserInfo() {
 
     let userData = axios.get('/auth/me').then(res => {
@@ -107,6 +119,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {cart:action.payload})
         case GET_SEARCH + '_FULFILLED':
             return Object.assign({}, state, {search:action.payload})
+        case GET_REDIRECT:
+            return Object.assign({}, state, {redirect:action.payload})
         default:
             return state
     }

@@ -10,6 +10,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const noredirect = require('./middleware/NoRedirect')
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -59,11 +60,8 @@ passport.deserializeUser((id, done) => {
         })
 })
 //Auth endpoints
-app.get('/auth', passport.authenticate('auth0'));
-app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `http://localhost:3000/`,
-    failureRedirect: 'http://localhost:3000/',
-}))
+app.get('/auth', noredirect.NoRedirect, passport.authenticate('auth0'));
+app.get('/auth/callback', noredirect.authenticate);
 app.get('/auth/me', (req, res) => {
     if (!req.user) {
         res.status(404).send('User not found.');

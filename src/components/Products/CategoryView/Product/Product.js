@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {getUserInfo, getProduct} from '../../../../ducks/reducer';
+import {getUserInfo, getProduct, getRedirect} from '../../../../ducks/reducer';
 
 class Product extends Component {
     constructor() {
@@ -18,9 +18,8 @@ class Product extends Component {
         this.props.getUserInfo();
         let product = this.props.match.params.product
         this.props.getProduct(product);
-    }
-    
-    componentWillReceiveProps(nextProps) {
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
     }
 
     inputQuantity(e){
@@ -33,7 +32,11 @@ class Product extends Component {
         let product = this.props.match.params.product;
         let user = this.props.user;
         let quantity = this.state.quantity;
-        axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
+        if(!user){
+            axios.get('/auth')
+            //redirect them to auth0
+        } else {
+        axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)}
         this.setState({
             quantity: 0
         })
@@ -69,8 +72,9 @@ class Product extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        product: state.product
+        product: state.product,
+        redirect: state.redirect
     }
 }
 
-export default connect(mapStateToProps, {getUserInfo, getProduct})(Product);
+export default connect(mapStateToProps, {getUserInfo, getProduct, getRedirect})(Product);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
-// import aos from 'aos';
+import 'animate.css/animate.min.css';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
 import logo from './images/logo.png';

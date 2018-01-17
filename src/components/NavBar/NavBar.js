@@ -1,30 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserInfo } from '../../ducks/reducer';
+import { getUserInfo, getRedirect } from '../../ducks/reducer';
 import Account from '../Account/Account';
 import OrderHistory from '../Account/OrderHistory';
 import Reviews from '../Account/Reviews';
 import cart from '../../images/carticon.png'
-import {Login,AccountLink} from '../Account/AccountLink';
+import { Login, AccountLink } from '../Account/AccountLink';
 // import UserProfile from 
 
 class NavBar extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            redirect: props.redirect
+        }
+    }
 
     componentDidMount() {
         this.props.getUserInfo()
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            redirect: nextProps.redirect
+        },()=>{
+            console.log(this.state.redirect)
+        })
+    }
+
 
     render() {
         const user = this.props.user
+        const redirect = this.state.redirect
+        console.log(redirect)
 
         let accountLink = null;
-        
-        if(!user.auth_id){
-            accountLink = <Login/>
+
+        if (!user.auth_id) {
+            accountLink = <Login
+                url={redirect}
+            />
         } else {
-            accountLink = <AccountLink/>
+            accountLink = <AccountLink />
         }
 
         //if session user is present, show session user name and route to user profile component on click
@@ -50,8 +69,9 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        redirect: state.redirect
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo })(NavBar);
+export default connect(mapStateToProps, { getUserInfo, getRedirect })(NavBar);
