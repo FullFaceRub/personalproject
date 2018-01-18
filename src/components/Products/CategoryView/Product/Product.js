@@ -52,8 +52,8 @@ class Product extends Component {
             detailTab = <Dimensions dimensions={product[0].product_dimensions} />
         } else if (this.props.location.pathname.includes("reviews")) {
             detailTab = <Reviews />
-        } else if (this.props.location.pathname.includes("features")) {
-            detailTab = <Features features={product[0].product_features} />
+        } else if (this.props.location.pathname.includes("features") || this.props.location.pathname.includes("product")) {
+            detailTab = this.props.product.length > 0?<Features features={product[0].product_features} />:null  
         }
         let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">
