@@ -159,6 +159,9 @@ class Checkout extends Component {
                         <div className="field" ><h5>Phone Number:</h5><input onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
                     </div>
                     <div className="paybuttonouter">
+                        <div>SubTotal: {total}</div>
+                        <div>Sales Tax: </div>
+                        <div>Total: </div>
                         <div className="paybutton">
                             <StripeCheckout
                                 name={'Your Order'}
