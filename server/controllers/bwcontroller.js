@@ -60,7 +60,6 @@ module.exports = {
         const product = req.params.productid;
         const quantity = Number(req.params.quantity);
         const db = req.app.get('db');
-        console.log(user, product, quantity)
         var data = {};
         db.changeQuantity([+user, +product, +quantity]).then((quantity) => {
             db.getCart([+user]).then((cart) => {
@@ -68,6 +67,22 @@ module.exports = {
                     data.cart=cart;
                     data.total = total
                     res.status(200).send(data)
+                })
+            })
+        })
+    },
+
+    removeFromCart: (req,res) => {
+        const user = req.params.user;
+        const product = req.params.productid;
+        const db = req.app.get('db');
+        var data = {};
+        db.removeFromCart([+user,+product]).then((quantity)=>{
+            db.getCart([+user]).then((cart) => {
+                db.getCartTotal([+user]).then((total) => {
+                    data.cart=cart;
+                    data.total=total;
+                    res.status(200).send(data);
                 })
             })
         })

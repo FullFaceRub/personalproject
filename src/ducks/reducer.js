@@ -83,11 +83,18 @@ export function incrementCart(customer, product, quantity) {
 
 export function decrementCart(customer, product, quantity) {
     let dec = Number(quantity) - 1;
-    let decData = axios.put(`/api/cartquantity/${customer}/${product}/${dec}`).then(res => {
+    let decData;
+    if (dec<1){
+            axios.delete(`/api/deletecartitem/${customer}/${product}`).then(res=> {
+                let newCart = [];
+                newCart.push(res.data.cart, res.data.total)
+                return newCart;
+        })}
+    decData = axios.put(`/api/cartquantity/${customer}/${product}/${dec}`).then(res => {
         let newCart = [];
         newCart.push(res.data.cart, res.data.total)
         return newCart
-    })
+        })
 
     return {
         type: DECREMENT_CART,

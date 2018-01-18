@@ -14,11 +14,11 @@ class Cart extends Component {
         this.props.getRedirect(url);
     }
 
-    componentWillReceiveProps(nextProps){
-        let user = nextProps.user.customer_id;
-        this.props.getUserInfo();
+    // componentWillReceiveProps(nextProps){
+        // let user = nextProps.user.customer_id;
+        // this.props.getUserInfo();
         // this.props.getCart(user);
-    }
+    // }
 
     render() {
         let cart = this.props.cart;

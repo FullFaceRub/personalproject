@@ -118,8 +118,8 @@ app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);
 app.get('/api/cart/:user', controller.getCart);
 app.get('/api/cartTotal/:user', controller.getCartTotal);
 app.put('/api/cartquantity/:user/:productid/:quantity', controller.changeQuantity);
-// app.get('/api/updatedcart/:use')
 app.get('/api/inspiration', controller.getInspired);
+app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);
 
 
 //***************************************************************************/
