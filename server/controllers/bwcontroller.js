@@ -18,7 +18,7 @@ module.exports = {
     },
 
     searchProduct: (req, res) => {
-        const product = '%'+req.params.query+'%';
+        const product = '%' + req.params.query + '%';
         const db = req.app.get('db');
 
         db.searchreadproduct([product]).then((product) => {
@@ -30,16 +30,16 @@ module.exports = {
         const user = req.params.user;
         const db = req.app.get('db');
 
-        db.getCart([user]).then((cart) => {
+        db.getCart([+user]).then((cart) => {
             res.status(200).send(cart)
         })
     },
-    
-    getCartTotal: (req,res) => {
+
+    getCartTotal: (req, res) => {
         const user = req.params.user;
         const db = req.app.get('db');
-        
-        db.getCartTotal([user]).then((total)=>{
+
+        db.getCartTotal([user]).then((total) => {
             res.status(200).send(total);
         })
     },
@@ -58,18 +58,25 @@ module.exports = {
     changeQuantity: (req, res) => {
         const user = req.params.user;
         const product = req.params.productid;
-        const quantity = req.params.quantity;
+        const quantity = Number(req.params.quantity);
         const db = req.app.get('db');
-
-        db.changeQuantity([user, product, quantity]).then((quantity) => {
-            res.status(200).send(quantity)
+        console.log(user, product, quantity)
+        var data = {};
+        db.changeQuantity([+user, +product, +quantity]).then((quantity) => {
+            db.getCart([+user]).then((cart) => {
+                db.getCartTotal([+user]).then((total) => {
+                    data.cart=cart;
+                    data.total = total
+                    res.status(200).send(data)
+                })
+            })
         })
     },
 
     getInspired: (req, res) => {
         const db = req.app.get('db');
 
-        db.getInspired().then((inspiration)=>{
+        db.getInspired().then((inspiration) => {
             res.status(200).send(inspiration)
         })
     }

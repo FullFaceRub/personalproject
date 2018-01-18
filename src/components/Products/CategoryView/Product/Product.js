@@ -46,7 +46,6 @@ class Product extends Component {
     }
 
     render() {
-        console.log(this.props.product)
         let { product } = this.props
         let detailTab;
         if (this.props.location.pathname.includes("dimensions")) {

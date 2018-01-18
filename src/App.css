@@ -156,6 +156,7 @@ body {
   height: 1.5vw;
   padding-left: 5%;
   color: silver;
+  outline: none;
 }
 
 .searchbox::placeholder {
@@ -166,6 +167,7 @@ body {
 
 .searchbox:focus {
   color: silver;
+  outline: none;
 }
 
 .searchbutton {
@@ -179,6 +181,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
 }
 
 .mag {
@@ -538,6 +541,11 @@ body {
   border-color: silver;
   color: silver;
   border-width: 1px;
+  outline: none;
+}
+
+button:active {
+  background: white;
 }
 
 .topoftable {
@@ -578,6 +586,7 @@ body {
   color: silver;
   border-width: 1px;
   font-size: 20px;
+  outline: 0;
 }
 
 .cartfooter {
@@ -660,10 +669,12 @@ body {
   padding-left: 5px;
   margin-left: 10px;
   color: silver;
+  outline: none;
 }
 
 .field input:focus {
   color: silver;
+  outline: none;
 }
 
 .field h5 {
@@ -671,6 +682,7 @@ body {
 }
 
 .field button {
+  outline: none;
   background: rgba(255,255,255,0.2);
   color: silver;
   border-radius: 15px;

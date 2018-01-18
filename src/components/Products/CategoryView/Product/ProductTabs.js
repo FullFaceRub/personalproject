@@ -9,7 +9,6 @@ export function Features (props) {
 }
 
 export function Dimensions (props) {
-    console.log(props);
     return (
         <div>
             <div>{props.dimensions}</div>

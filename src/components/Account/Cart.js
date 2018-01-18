@@ -17,11 +17,12 @@ class Cart extends Component {
     componentWillReceiveProps(nextProps){
         let user = nextProps.user.customer_id;
         this.props.getUserInfo();
-        this.props.getCart(user);
+        // this.props.getCart(user);
     }
 
     render() {
         let cart = this.props.cart;
+        console.log(cart);
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
         let cartMap;
         if (cart[0].length < 1) {
@@ -37,8 +38,8 @@ class Cart extends Component {
                         <h1>{e.quantity}</h1>
                         <br />
                         <div className="addremove">
-                            <button onClick={() => this.props.incrementCart(e.customer_id, e.product_id, e.quantity)}>Add</button>
-                            <button onClick={() => this.props.decrementCart(e.customer_id, e.product_id, e.quantity)}>Remove</button>
+                            <button onClick={(event) => this.props.incrementCart(e.customer_id, e.product_id, e.quantity)}>Add</button>
+                            <button onClick={(event) => this.props.decrementCart(e.customer_id, e.product_id, e.quantity)}>Remove</button>
                         </div>
                     </div>
                     <div className="ptileprice">

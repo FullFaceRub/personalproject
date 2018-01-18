@@ -3,7 +3,7 @@ import axios from 'axios';
 //Data
 const initialState = {
     user: {},
-    cart: [[],[]],
+    cart: [[], []],
     product: [],
     search: [],
     redirect: '/'
@@ -41,7 +41,7 @@ export function getUserInfo() {
     }
 }
 
-export function getProduct(product){
+export function getProduct(product) {
 
     let productData = axios.get('/api/product/' + product).then(res => {
         return res.data
@@ -53,11 +53,11 @@ export function getProduct(product){
     }
 }
 
-export function getCart(user){
-    
+export function getCart(user) {
+
     let itemData = axios.get(`/api/cart/${user}`)
     let totalData = axios.get(`/api/cartTotal/${user}`)
-    let cartData = axios.all([itemData, totalData]).then(res=>{
+    let cartData = axios.all([itemData, totalData]).then(res => {
         return [res[0].data, res[1].data]
     })
 
@@ -67,33 +67,36 @@ export function getCart(user){
     }
 }
 
-export function incrementCart(customer,product,quantity){
-    let inc=Number(quantity)+1;
-    // let incData = axios.put(`/api/cart/${customer}/${product}/${inc}`).then(res=>{
-    //     console.log(res.data)
-    //     return res.data
-    // })
+export function incrementCart(customer, product, quantity) {
+    let inc = Number(quantity) + 1;
+    let incData = axios.put(`/api/cartquantity/${customer}/${product}/${inc}`).then(res => {
+        let newCart = [];
+        newCart.push(res.data.cart, res.data.total)
+        return newCart
+    })
 
     return {
         type: INCREMENT_CART,
-        payload: inc
+        payload: incData
     }
 }
 
-export function decrementCart(customer,product,quantity){
-    let dec=Number(quantity)-1;
-    // let decData = axios.put(`/api/cart/${customer}/${product}/${dec}`).then(res=>{
-    //     return res.data
-    // })
+export function decrementCart(customer, product, quantity) {
+    let dec = Number(quantity) - 1;
+    let decData = axios.put(`/api/cartquantity/${customer}/${product}/${dec}`).then(res => {
+        let newCart = [];
+        newCart.push(res.data.cart, res.data.total)
+        return newCart
+    })
 
     return {
         type: DECREMENT_CART,
-        payload: dec
+        payload: decData
     }
 }
 
-export function getSearch(query){
-    let searchData = axios.get('http://localhost:8080/api/products/search/'+query).then(res=>{
+export function getSearch(query) {
+    let searchData = axios.get('http://localhost:8080/api/products/search/' + query).then(res => {
         return res.data
     })
 
@@ -109,17 +112,17 @@ export default function reducer(state = initialState, action) {
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
         case GET_CART + '_FULFILLED':
-            return Object.assign({}, state, { cart:action.payload})
+            return Object.assign({}, state, { cart: action.payload })
         case GET_PRODUCT + '_FULFILLED':
-            return Object.assign({}, state, { product:action.payload})
+            return Object.assign({}, state, { product: action.payload })
         case INCREMENT_CART + '_FULFILLED':
-            return Object.assign({}, state, { cart:action.payload})
+            return Object.assign({}, state, { cart: action.payload })
         case DECREMENT_CART + '_FULFILLED':
-            return Object.assign({}, state, {cart:action.payload})
+            return Object.assign({}, state, { cart: action.payload })
         case GET_SEARCH + '_FULFILLED':
-            return Object.assign({}, state, {search:action.payload})
+            return Object.assign({}, state, { search: action.payload })
         case GET_REDIRECT:
-            return Object.assign({}, state, {redirect:action.payload})
+            return Object.assign({}, state, { redirect: action.payload })
         default:
             return state
     }
