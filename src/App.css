@@ -740,7 +740,16 @@ button:active {
 
 .paybuttonouter {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.checkouttotal {
+  width: 150px;
+}
+
+.addToCart:active {
+  background: white;
 }
 
 .paybutton {

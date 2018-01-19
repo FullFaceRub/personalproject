@@ -34,12 +34,13 @@ class Product extends Component {
         let product = this.props.match.params.product;
         let user = this.props.user;
         let quantity = this.state.quantity;
-        // if (!user) {
-        //     axios.get('/auth')
-        //     //redirect them to auth0
-        // } else {
+        let redirect = this.props.redirect;
+        console.log(process.env.REACT_APP_LOGIN)
+        if (!user.customer_id) {
+            window.location.href = process.env.REACT_APP_LOGIN+'?redirectto='+redirect
+        } else {
         axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)
-        // }
+        }
         this.setState({
             quantity: 0
         })

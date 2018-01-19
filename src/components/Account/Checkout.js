@@ -16,7 +16,7 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         background: 'black',
         color: 'silver',
-        height: '400px',
+        height: '425px',
         width: '750px',
         display: 'flex',
         flexDirection: 'column',
@@ -47,7 +47,6 @@ class Checkout extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.handleAddress = this.handleAddress.bind(this);
         this.handleCity = this.handleCity.bind(this);
-        this.handleCountry = this.handleCountry.bind(this);
         this.handleZipCode = this.handleZipCode.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePhone = this.handlePhone.bind(this);
@@ -95,15 +94,9 @@ class Checkout extends Component {
         })
     }
 
-    handleCountry(e) {
-        this.setState({
-            country: e
-        })
-    }
-
     handleZipCode(e) {
         this.setState({
-            zipcode: e
+            zipCode: e
         })
     }
 
@@ -121,12 +114,21 @@ class Checkout extends Component {
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post('http://localhost:8080/api/payment', {
+        axios.post('/api/payment', {
             token,
-            amount: this.props.cart[1][0].total
+            amount: this.props.cart[1][0].total,
+            user: this.props.user.customer_id,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zipCode: this.state.zipCode,
+            total: this.props.cart[1][0].total,
+            email: this.state.email,
+            phone: this.state.phone
         }).then(response => {
-            alert('we are in business')
-        });
+            alert('we are in business');
+        }
+            );
     }
 
     render() {
@@ -152,16 +154,14 @@ class Checkout extends Component {
                         <div className="field" ><h5>Street Address:</h5><input onChange={e => this.handleAddress(e.target.value)} value={this.state.address} id="address"></input></div>
                         <div className="subCheckOutForm">
                             <div className="field" ><h5>City:</h5><input onChange={e => this.handleCity(e.target.value)} value={this.state.city} id="city"></input></div>
-                            <div className="field" ><h5>State:</h5><input onChange={e => this.handleCountry(e.target.value)} value={this.state.state} id="state"></input></div>
+                            <div className="field" ><h5>State:</h5><input onChange={e => this.handleState(e.target.value)} value={this.state.state} id="state"></input></div>
                             <div className="field" ><h5>Zip Code:</h5><input onChange={e => this.handleZipCode(e.target.value)} value={this.state.zipCode} id="zipcode"></input></div>
                         </div>
                         <div className="field" ><h5>Email:</h5><input onChange={e => this.handleEmail(e.target.value)} value={this.state.email} id="name"></input></div>
                         <div className="field" ><h5>Phone Number:</h5><input onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
                     </div>
                     <div className="paybuttonouter">
-                        <div>SubTotal: {total}</div>
-                        <div>Sales Tax: </div>
-                        <div>Total: </div>
+                        <div className="checkouttotal">Total: {total}</div>
                         <div className="paybutton">
                             <StripeCheckout
                                 name={'Your Order'}

@@ -94,5 +94,9 @@ module.exports = {
         db.getInspired().then((inspiration) => {
             res.status(200).send(inspiration)
         })
+    },
+
+    createInvoice: (req,res) => {
+        
     }
 }

@@ -10,7 +10,8 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const noredirect = require('./middleware/NoRedirect')
+const noredirect = require('./middleware/NoRedirect');
+const paymentcontroller = require('./controllers/paymentcontroller');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -74,52 +75,17 @@ app.get('/auth/logout', function (req, res) {
     res.redirect('http://localhost:3000/')
 })
 //Payment endpoint
-app.post('/api/payment', function (req, res, next) {
-    //convert amount to pennies
-    const amountArray = req.body.amount.toString().split('');
-    const pennies = [];
-    for (var i = 0; i < amountArray.length; i++) {
-        if (amountArray[i] === ".") {
-            if (typeof amountArray[i + 1] === "string") {
-                pennies.push(amountArray[i + 1]);
-            } else {
-                pennies.push("0");
-            }
-            if (typeof amountArray[i + 2] === "string") {
-                pennies.push(amountArray[i + 2]);
-            } else {
-                pennies.push("0");
-            }
-            break;
-        } else {
-            pennies.push(amountArray[i])
-        }
-    }
-    const convertedAmt = parseInt(pennies.join(''));
-
-    const charge = stripe.charges.create({
-        amount: convertedAmt, // amount in cents, again
-        currency: 'usd',
-        source: req.body.token.id,
-        description: 'Test charge from react app'
-    }, function (err, charge) {
-        if (err) return res.sendStatus(500)
-        return res.sendStatus(200);
-        // if (err && err.type === 'StripeCardError') {
-        //   // The card has been declined
-        // }
-    });
-});
+app.post('/api/payment', paymentcontroller.payment);// This endpoint also creates an invoice on the invoices table
 //Endpoints
-app.get('/api/products/:category', controller.getCategory);
-app.get('/api/product/:productid', controller.getProduct);
-app.get('/api/products/search/:query', controller.searchProduct);
-app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);
-app.get('/api/cart/:user', controller.getCart);
-app.get('/api/cartTotal/:user', controller.getCartTotal);
-app.put('/api/cartquantity/:user/:productid/:quantity', controller.changeQuantity);
-app.get('/api/inspiration', controller.getInspired);
-app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);
+app.get('/api/products/:category', controller.getCategory);// This endpoint retrieves the data for CategoryView component
+app.get('/api/product/:productid', controller.getProduct);// This endpoint retrieves the data for Product component
+app.get('/api/products/search/:query', controller.searchProduct);// This endpoint retrieves the data for SearchResults component
+app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);// This endpoint adds a product and quantity to a customer's cart
+app.get('/api/cart/:user', controller.getCart);// This endpoint retrieves the data for a particular customer's Cart component
+app.get('/api/cartTotal/:user', controller.getCartTotal);// This endpoint uses a join to derive the Total cost of a customer's Cart and sends that to the Cart component
+app.put('/api/cartquantity/:user/:productid/:quantity', controller.changeQuantity);// This endpoint serves both the Increment and Decrement functions in the Cart component
+app.get('/api/inspiration', controller.getInspired);// This endpoint retrieves the data for the Inspiration component
+app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);// This endpoint removes an item from the Cart component if its quantity reaches 0
 
 
 //***************************************************************************/
