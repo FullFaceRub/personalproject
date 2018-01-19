@@ -1,3 +1,5 @@
+const underscore = require('underscore');
+
 module.exports = {
     getCategory: (req, res) => {
         const category = req.params.category;
@@ -65,7 +67,7 @@ module.exports = {
         db.changeQuantity([+user, +product, +quantity]).then((quantity) => {
             db.getCart([+user]).then((cart) => {
                 db.getCartTotal([+user]).then((total) => {
-                    data.cart=cart;
+                    data.cart = cart;
                     data.total = total
                     res.status(200).send(data)
                 })
@@ -73,16 +75,16 @@ module.exports = {
         })
     },
 
-    removeFromCart: (req,res) => {
+    removeFromCart: (req, res) => {
         const user = req.params.user;
         const product = req.params.productid;
         const db = req.app.get('db');
         var data = {};
-        db.removeFromCart([+user,+product]).then((quantity)=>{
+        db.removeFromCart([+user, +product]).then((quantity) => {
             db.getCart([+user]).then((cart) => {
                 db.getCartTotal([+user]).then((total) => {
-                    data.cart=cart;
-                    data.total=total;
+                    data.cart = cart;
+                    data.total = total;
                     res.status(200).send(data);
                 })
             })
@@ -99,10 +101,38 @@ module.exports = {
 
     getOrders: (req, res) => {
         const db = req.app.get('db');
-        const {user} = req.body
+        const { user } = req.params
+        console.log(user)
 
-        db.getInvoices([+user]).then((orders)=>{
-            console.log(orders);
+        db.getInvoices([+user]).then((orders) => {
+            var ordersArr = [];
+            for (var i in orders) {
+                ordersArr.push(orders[i])
+            }
+            var results = [];
+            for (var i = 0, obj = {}; i < ordersArr.length; i++) {
+                if (ordersArr[i].invoice_id != obj.invoiceNumber) {
+                    obj = {
+                        invoiceNumber: ordersArr[i].invoice_id,
+                        invoiceDate: ordersArr[i].invoicedate,
+                        total: ordersArr[i].total,
+                        invoicelines: []
+                    }
+                    results.push(obj)
+                }
+
+                obj.invoicelines.push({
+                    invoiceLine: ordersArr[i].invoiceline_id,
+                    image: ordersArr[i].product_image,
+                    product: ordersArr[i].product_name,
+                    price: ordersArr[i].product_price,
+                    quantity: ordersArr[i].quantity
+                })
+            }
+
+            // console.log(underscore.indexBy(ordersArr, 'invoice_id'))
+
+            res.status(200).send(results)
         })
     }
 }

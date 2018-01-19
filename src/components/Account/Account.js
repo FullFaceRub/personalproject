@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo } from '../../ducks/reducer';
+import { getUserInfo, getRedirect } from '../../ducks/reducer';
 import { Link, Route, Switch } from 'react-router-dom';
 import OrderHistory from '../Account/OrderHistory';
 import Cart from '../Account/Cart';
@@ -9,9 +9,11 @@ class Account extends Component {
 
     componentDidMount() {
         this.props.getUserInfo();
+        let url = this.props.location.pathname
+        this.props.getRedirect(url);
     }
 
-    componentWillReceiveProps(){
+    componentWillReceiveProps() {
         this.props.getUserInfo();
     }
 
@@ -26,22 +28,20 @@ class Account extends Component {
             // )
         } else {
             // return (
-            accountDisplay = <div className='account'>
-                <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>
-                {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
-                <div className='subnav'>
-                    <Link to='/account' className='subnavlinks'>Account Info</Link>
-                    <Link to='/account/orderhistory' className='subnavlinks'>Order History</Link>
+            accountDisplay = <div className='accountmain'>
+                <div className="accounttop">
+                    <div className="navlinks">Your Account<div className="line"></div></div>
+                    {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
+                    <button>Logout</button>
                 </div>
-                <div className='main'>
+                <div>
                     <Switch>
                         <Route path='/account/orderhistory' component={OrderHistory} />
                         <Route path='/account/cart' component={Cart} />
                     </Switch>
                     <div className="accountbody">
-                        <button>Logout</button>
-                        <button>View Cart</button>
-                        <h1>Order History</h1>
+                        <Link to="/account/cart" className="navlinks">View Cart<div className="line"></div></Link>
+                        <h1 className="navlinks" id="orderhistory">Order History</h1>
                         <OrderHistory />
                     </div>
                 </div>
@@ -51,22 +51,20 @@ class Account extends Component {
 
 
         return (
-        <div>
-            <div className="main">
-                <h1>Your Account</h1>
+            <div>
                 {accountDisplay}
+                <div className="cartfooter">
+                </div>
             </div>
-            <div className="cartfooter">
-            </div>
-        </div>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        redirect: state.redirect
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo })(Account)
+export default connect(mapStateToProps, { getUserInfo, getRedirect })(Account)

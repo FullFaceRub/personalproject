@@ -1,0 +1,28 @@
+[{
+    invoiceDate:"2018-01-18T07:00:00.000Z",
+    invoiceNumber:11,
+    invoicelines:[
+        {
+            image:"/images/2.png",
+            invoiceLine:29,
+            price:null,
+            product:"800 D3",
+            quantity:2
+        },
+        {
+            image:"/images/17.jpg",
+            invoiceLine:30,
+            price:null,
+            product:"HTM72 S2",
+            quantity:1
+        },
+        {
+            image:"/images/15.jpg",
+            invoiceLine:31,
+            price:null,
+            product:"707 S2",
+            quantity:1
+        }
+    ],
+    total:"31999.96"},
+    {},...]
