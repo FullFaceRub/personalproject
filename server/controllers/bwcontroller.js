@@ -97,7 +97,12 @@ module.exports = {
         })
     },
 
-    createInvoice: (req,res) => {
-        
+    getOrders: (req, res) => {
+        const db = req.app.get('db');
+        const {user} = req.body
+
+        db.getInvoices([+user]).then((orders)=>{
+            console.log(orders);
+        })
     }
 }

@@ -10,6 +10,7 @@ import SearchResults from './components/Search/SearchResults';
 // import OrderHistory from './components/Account/OrderHistory';
 import Cart from './components/Account/Cart';
 import FailedLogin from './components/Account/FailedLogin';
+import Account from './components/Account/Account';
 
 export default (
     <Switch>
@@ -22,5 +23,6 @@ export default (
         <Route path='/account/cart' component={Cart}/>
         <Route exact path='/search/results/:param' component={SearchResults} />
         <Route path='/failedlogin' component={FailedLogin}/>
+        <Route path='/account' component={Account}/>
     </Switch>
 )

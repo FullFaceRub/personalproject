@@ -153,7 +153,7 @@ class Checkout extends Component {
                     style={customStyles}
                     contentLabel="Please fill out your information:">
                     <div className="closeouter">
-                        <div className="close" onClick={this.closeModal}>>close<div className="line"></div></div>
+                        <button className="close" onClick={this.closeModal}>>close<div className="line"></div></button>
                     </div>
                     <h2 className="subtitle">Shipping information</h2>
 

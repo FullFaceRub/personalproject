@@ -26,7 +26,7 @@ class Cart extends Component {
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
         let cartMap;
         if (cart[0].length < 1) {
-            cartMap = <h1>Your cart is empty or you just need to Login</h1>
+            cartMap = <h1>Your cart is empty or you just need to <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a></h1>
         } else {
             cartMap = cart[0].map((e, i) => {
                 return <div key={i} className="carttile">
@@ -97,4 +97,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCart, getUserInfo, incrementCart, decrementCart, getRedirect })(Cart)//add getCart to export 
+export default connect(mapStateToProps, { getCart, getUserInfo, incrementCart, decrementCart, getRedirect })(Cart)

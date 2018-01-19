@@ -485,7 +485,7 @@ body {
   background: silver;
   border: solid;
   border-radius: 50%;
-  border-color: silver;
+  border-color: black;
   width: 12px;
   border-width: .5px;
   height: 12px;
@@ -494,6 +494,12 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+  transition: .3s;
+}
+
+.cartcontainer:hover > .cartCirc {
+  border-color: silver;
+  /* height: 15px; */
 }
 
 .cartNum {

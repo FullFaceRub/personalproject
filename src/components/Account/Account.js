@@ -8,37 +8,58 @@ import Cart from '../Account/Cart';
 class Account extends Component {
 
     componentDidMount() {
-        this.props.getUserInfo()
+        this.props.getUserInfo();
+    }
+
+    componentWillReceiveProps(){
+        this.props.getUserInfo();
     }
 
     render() {
         const user = this.props.user;
-
+        let accountDisplay;
         if (!user) {
-            return (
-                <div className="navlinks">
-                    <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a>
-                </div>
-            )
+            // return (
+            accountDisplay = <div className="navlinks">
+                <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a> to see your account info.
+            </div>
+            // )
         } else {
-            return (
-                <div className='account'>
-                    <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>
-                    {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
-                    <div className='subnav'>
-                        <Link to='/account' className='subnavlinks'>Account Info</Link>
-                        <Link to='/account/orderhistory' className='subnavlinks'>Order History</Link>
-                    </div>
-                    <div className='main'>
-                        <Switch>
-                            <Route path='/account/orderhistory' component={OrderHistory} />
-                            <Route path='/account/cart' component={Cart}/>
-                        </Switch>
-                    </div>
-
+            // return (
+            accountDisplay = <div className='account'>
+                <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>
+                {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
+                <div className='subnav'>
+                    <Link to='/account' className='subnavlinks'>Account Info</Link>
+                    <Link to='/account/orderhistory' className='subnavlinks'>Order History</Link>
                 </div>
-            )
+                <div className='main'>
+                    <Switch>
+                        <Route path='/account/orderhistory' component={OrderHistory} />
+                        <Route path='/account/cart' component={Cart} />
+                    </Switch>
+                    <div className="accountbody">
+                        <button>Logout</button>
+                        <button>View Cart</button>
+                        <h1>Order History</h1>
+                        <OrderHistory />
+                    </div>
+                </div>
+            </div>
+            // )
         }
+
+
+        return (
+        <div>
+            <div className="main">
+                <h1>Your Account</h1>
+                {accountDisplay}
+            </div>
+            <div className="cartfooter">
+            </div>
+        </div>
+        )
     }
 }
 
