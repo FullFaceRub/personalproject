@@ -528,32 +528,32 @@ update products
 set product_image = '/images/62.jpg'
 where product_id = 62;
 update products
-set product_image = '/images/'
+set product_image = '/images/63.jpg'
 where product_id = 63;
 update products
-set product_image = '/images/'
+set product_image = '/images/64.jpg'
 where product_id = 64;
 update products
-set product_image = '/images/'
+set product_image = '/images/65.jpg'
 where product_id = 65;
 update products
-set product_image = '/images/'
+set product_image = '/images/66.jpg'
 where product_id = 66;
 update products
-set product_image = '/images/'
+set product_image = '/images/67.jpg'
 where product_id = 67;
 update products
-set product_image = '/images/'
+set product_image = '/images/68.jpg'
 where product_id = 68;
 update products
-set product_image = '/images/'
+set product_image = '/images/69.jpg'
 where product_id = 69;
 update products
-set product_image = '/images/'
+set product_image = '/images/70.jpg'
 where product_id = 70;
 update products
-set product_image = '/images/'
+set product_image = '/images/71.jpg'
 where product_id = 71;
 update products
-set product_image = '/images/'
+set product_image = '/images/72.jpg'
 where product_id = 72;

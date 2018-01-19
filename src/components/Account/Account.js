@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/reducer';
 import { Link, Route, Switch } from 'react-router-dom';
 import OrderHistory from '../Account/OrderHistory';
-// import Reviews from '../Account/Reviews';
 import Cart from '../Account/Cart';
 
 class Account extends Component {

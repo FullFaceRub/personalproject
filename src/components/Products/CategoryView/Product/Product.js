@@ -36,10 +36,14 @@ class Product extends Component {
         let quantity = this.state.quantity;
         let redirect = this.props.redirect;
         console.log(process.env.REACT_APP_LOGIN)
-        if (!user.customer_id) {
-            window.location.href = process.env.REACT_APP_LOGIN+'?redirectto='+redirect
+        if (quantity > 0) {
+            if (!user.customer_id) {
+                window.location.href = process.env.REACT_APP_LOGIN + '?redirectto=' + redirect
+            } else {
+                axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)
+            }
         } else {
-        axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)
+            alert('Please enter a quantity')
         }
         this.setState({
             quantity: 0
@@ -54,7 +58,7 @@ class Product extends Component {
         } else if (this.props.location.pathname.includes("reviews")) {
             detailTab = <Reviews />
         } else if (this.props.location.pathname.includes("features") || this.props.location.pathname.includes("product")) {
-            detailTab = this.props.product.length > 0?<Features features={product[0].product_features} />:null  
+            detailTab = this.props.product.length > 0 ? <Features features={product[0].product_features} /> : null
         }
         let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">

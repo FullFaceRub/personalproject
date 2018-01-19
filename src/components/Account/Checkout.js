@@ -37,7 +37,6 @@ class Checkout extends Component {
             address: '',
             city: '',
             state: '',
-            country: '',
             zipCode: '',
             email: '',
             phone: ''
@@ -124,20 +123,29 @@ class Checkout extends Component {
             zipCode: this.state.zipCode,
             total: this.props.cart[1][0].total,
             email: this.state.email,
-            phone: this.state.phone
+            phone: this.state.phone,
+            cart: this.props.cart[0]
         }).then(response => {
             alert('we are in business');
-        }
-            );
+        });
     }
 
     render() {
         let user = this.props.user.customer_name
         let cart = this.props.cart;
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
+        let {name,address,city,state,zipCode,email,phone} = this.state
+        const isEnabled = name.length>0 
+        && address.length>0 
+        && city.length>0
+        && state.length>0
+        && zipCode.length>0
+        && email.length>0
+        && phone.length>0;
+
         return (
             <div>
-                <button onClick={this.openModal} className="checkoutbutton">Checkout</button>
+                <button disabled={cart[1].length===0} onClick={this.openModal} className="checkoutbutton">Checkout</button>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.state.afterOpenModal}
@@ -161,14 +169,16 @@ class Checkout extends Component {
                         <div className="field" ><h5>Phone Number:</h5><input onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
                     </div>
                     <div className="paybuttonouter">
-                        <div className="checkouttotal">Total: {total}</div>
-                        <div className="paybutton">
+                        <div className="checkouttotal">Total: ${total}</div>
+                        <div  className="paybutton">
                             <StripeCheckout
                                 name={'Your Order'}
                                 description={'Please enter your card information:'}
                                 token={this.onToken}
                                 stripeKey={stripe.pub_key}
                                 amount={total * 100}
+                                disabled={!isEnabled}
+                                className = "stripe"
                             />
                         </div>
                     </div>

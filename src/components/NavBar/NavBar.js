@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { getUserInfo, getRedirect } from '../../ducks/reducer';
 import Account from '../Account/Account';
 import OrderHistory from '../Account/OrderHistory';
-import Reviews from '../Account/Reviews';
 import cart from '../../images/carticon.png'
-import { Login, AccountLink } from '../Account/AccountLink';
+import Login from '../Account/Login';
+import AccountLink  from '../Account/AccountLink';
 // import UserProfile from 
 
 class NavBar extends Component {
@@ -19,7 +19,6 @@ class NavBar extends Component {
     render() {
         const user = this.props.user
         const redirect = this.props.redirect
-
         let accountLink = null;
 
         if (!user.auth_id) {
@@ -54,7 +53,8 @@ class NavBar extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        redirect: state.redirect
+        redirect: state.redirect,
+        cart: state.cart
     }
 }
 

@@ -4,8 +4,9 @@ module.exports = {
     payment: (req, res, next) => {
         const amountArray = req.body.amount.toString().split('');
         const pennies = [];
-        const { user, address, city, state, zipCode, total, email, phone } = req.body;
+        const { user, address, city, state, zipCode, total, email, phone, cart } = req.body;
         const date = new Date();
+        var invoice;
         const db = req.app.get('db');
         for (var i = 0; i < amountArray.length; i++) {
             if (amountArray[i] === ".") {
@@ -34,8 +35,17 @@ module.exports = {
         }, function (err, charge) {
             if (err) return res.sendStatus(500)
             db.createInvoice([user, date, address, city, state, zipCode, total, email, phone]).then((invoice) => {
+                let invoiceId = invoice[0].invoice_id
+                for(i=0;i<cart.length;i++){
+                    let productId = cart[i].product_id;
+                    let qty = cart[i].quantity
+                    db.createInvoiceline([invoiceId, productId, qty]).then((line)=>{
+                    })                    
+                }
+                db.clearCart([user]).then((emptyCart)=>{})
                 res.status(200);
             })
+
             return res.sendStatus(200);
         });
     }

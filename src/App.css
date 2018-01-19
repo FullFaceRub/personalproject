@@ -325,7 +325,8 @@ body {
 }
 
 .ptileimg {
-  height: 20vh;
+  max-height: 114px;
+  max-width: 114px;
 }
 
 .ptileprice {
@@ -474,6 +475,37 @@ body {
   width: 130px;
 }
 
+.cartcontainer {
+  display: flex;
+  text-decoration: none;
+}
+
+.cartCirc {
+
+  background: silver;
+  border: solid;
+  border-radius: 50%;
+  border-color: silver;
+  width: 12px;
+  border-width: .5px;
+  height: 12px;
+  margin-left: -10px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.cartNum {
+  font-size: 9px;
+  font-weight: bolder;
+  color: black;
+  margin: auto;
+  width: 100%;
+  height: 9px;
+  text-align: center;
+}
+
 .cart {
   height: 25px;
 }
@@ -587,6 +619,10 @@ button:active {
   border-width: 1px;
   font-size: 20px;
   outline: 0;
+}
+
+.checkoutbutton:disabled {
+  display: none;
 }
 
 .cartfooter {
@@ -756,4 +792,8 @@ button:active {
   margin-top: 15px;
   width: 150px;
   display: flex;
+}
+
+.paybutton:disabled {
+  display: none;
 }

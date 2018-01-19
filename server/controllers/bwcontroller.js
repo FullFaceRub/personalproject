@@ -18,7 +18,8 @@ module.exports = {
     },
 
     searchProduct: (req, res) => {
-        const product = '%' + req.params.query + '%';
+        const standard = req.params.query.toUpperCase();
+        const product = '%' + standard + '%';
         const db = req.app.get('db');
 
         db.searchreadproduct([product]).then((product) => {
