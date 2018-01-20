@@ -35,7 +35,6 @@ class Product extends Component {
         let user = this.props.user;
         let quantity = this.state.quantity;
         let redirect = this.props.redirect;
-        console.log(process.env.REACT_APP_LOGIN)
         if (quantity > 0) {
             if (!user.customer_id) {
                 window.location.href = process.env.REACT_APP_LOGIN + '?redirectto=' + redirect

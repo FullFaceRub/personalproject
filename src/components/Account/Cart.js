@@ -22,7 +22,6 @@ class Cart extends Component {
 
     render() {
         let cart = this.props.cart;
-        console.log(cart);
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
         let cartMap;
         if (cart[0].length < 1) {

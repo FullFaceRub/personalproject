@@ -102,7 +102,6 @@ module.exports = {
     getOrders: (req, res) => {
         const db = req.app.get('db');
         const { user } = req.params
-        console.log(user)
 
         db.getInvoices([+user]).then((orders) => {
             var ordersArr = [];
@@ -130,7 +129,6 @@ module.exports = {
                 })
             }
 
-            // console.log(underscore.indexBy(ordersArr, 'invoice_id'))
 
             res.status(200).send(results)
         })
