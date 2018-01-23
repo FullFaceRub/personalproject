@@ -16,21 +16,31 @@ body {
   animation-duration: .8s;
 }
 
-
-
 .mainheader {
   width: 100%;
-  height: 10vh;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 2.5vh;
-  padding-bottom: 2.5vh;
+  padding-top: 25px;
+  padding-bottom: 25px;
   padding-left: 7vw;
   padding-right: 7vw;
   position: fixed;
   top: 0px;
   background: black;
+}
+
+#accountlink:hover .line {
+  width: 75px;
+}
+
+.logout:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.logout:active {
+  background: white;
 }
 
 .logo {
@@ -40,11 +50,11 @@ body {
 .landing {
   color: silver;
   font-family: 'Abel', sans-serif;
-  font-size: 7vh;
+  font-size: 45px;
   position: absolute;
-  top: 39vh;
-  left: 33vw;
-  height: 40vh;
+  top: 240px;
+  left: 410px;
+  height: 250px;
   width: 40%;
   font-weight: lighter;
   animation-name: fadeIn;
@@ -70,6 +80,7 @@ body {
   width: 40vw;
   justify-content: space-between;
   align-items: center;
+  background: black;
 }
 
 .navlinks {
@@ -101,13 +112,14 @@ body {
   display: flex;
   justify-content: space-between;
   position: fixed;
+  margin-top: 10px;
 }
 
 .subnavlinks {
   text-decoration: none;
   color: silver;
   font-family: 'Abel', sans-serif;
-  font-size: 2.5vh;
+  font-size: 12px;
 }
 
 .subnavlinks:hover > .line {
@@ -118,7 +130,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 80px;
 }
 
 .content {
@@ -258,7 +270,9 @@ body {
 }
 
 .backbutton {
-  text-align: right;
+  position: absolute;
+  top: 10px;
+  right: 225px;
 }
 
 .backbutton:hover > .line {
@@ -266,6 +280,7 @@ body {
 }
 
 .catmain {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -325,6 +340,7 @@ body {
   border: solid;
   border-width: 0px;
   border-color: silver;
+  overflow-y: hidden;
   animation-name: fadeIn;
   animation-duration: .6s;
   transition: .1s;
@@ -391,6 +407,21 @@ body {
   padding-right: 25px;
 }
 
+.productdetail a {
+  text-decoration: none;
+  color: silver;
+}
+
+.pbackbutton {
+  position: absolute;
+  top: 100px;
+  right: 275px;
+}
+
+.pbackbutton:hover > .line {
+  width: 100%;
+}
+
 .detailtab {
   background: rgba(255,255,255,0.2);
   border: solid;
@@ -398,6 +429,7 @@ body {
   height: 125px;
   width: 300px;
   padding: 15px;
+  overflow-y: scroll;
 }
 
 .description {

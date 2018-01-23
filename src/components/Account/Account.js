@@ -32,7 +32,7 @@ class Account extends Component {
                 <div className="accounttop">
                     <div className="navlinks">Your Account<div className="line"></div></div>
                     {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
-                    <a href="http://localhost:8080/auth/logout"><button>Logout</button></a>
+                    <a href="http://localhost:8080/auth/logout"><button className="logout">Logout</button></a>
                 </div>
                 <div>
                     <Switch>
@@ -40,7 +40,7 @@ class Account extends Component {
                         <Route path='/account/cart' component={Cart} />
                     </Switch>
                     <div className="accountbody">
-                        <Link to="/account/cart" className="navlinks">View Cart<div className="line"></div></Link>
+                        <Link to="/account/cart" className="navlinks" id="accountlink"><div>View Cart<div className="line"></div></div></Link>
                         <h1 className="navlinks" id="orderhistory">Order History</h1>
                         <OrderHistory />
                     </div>

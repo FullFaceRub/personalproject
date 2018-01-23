@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Features (props) {
     return (
-        <div>
+        <div className="tabDet">
             <div>{props.features}</div>
         </div>
     )
@@ -10,7 +10,7 @@ export function Features (props) {
 
 export function Dimensions (props) {
     return (
-        <div>
+        <div className="tabDet">
             <div>{props.dimensions}</div>
         </div>
     )
@@ -18,7 +18,7 @@ export function Dimensions (props) {
 
 export function Reviews (props) {
     return (
-        <div>
+        <div className="tabDet">
             <div>{props.reviews}</div>
         </div>
     )

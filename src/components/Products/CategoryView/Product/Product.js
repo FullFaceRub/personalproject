@@ -69,6 +69,7 @@ class Product extends Component {
         }
         let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">
+                <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
                 <div>
                     <h1 className="productname">{e.product_name}</h1>
                     <img src={e.product_image} alt={e.product_name} className="productdetailimg" />
