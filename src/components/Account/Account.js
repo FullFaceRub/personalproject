@@ -32,7 +32,7 @@ class Account extends Component {
                 <div className="accounttop">
                     <div className="navlinks">Your Account<div className="line"></div></div>
                     {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
-                    <button>Logout</button>
+                    <a href="http://localhost:8080/auth/logout"><button>Logout</button></a>
                 </div>
                 <div>
                     <Switch>

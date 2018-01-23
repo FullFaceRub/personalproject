@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUserInfo, getRedirect } from '../../ducks/reducer';
-import Account from '../Account/Account';
-import OrderHistory from '../Account/OrderHistory';
-import cart from '../../images/carticon.png'
 import Login from '../Account/Login';
 import AccountLink  from '../Account/AccountLink';
 // import UserProfile from 

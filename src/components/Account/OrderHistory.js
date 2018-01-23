@@ -9,8 +9,10 @@ class OrderHistory extends Component {
         super();
 
         this.state = {
-            orders: []
+            orders: [],
+            expandId: null
         }
+        this.toggleExpand=this.toggleExpand.bind(this);
     }
 
     componentDidMount() {
@@ -34,8 +36,13 @@ class OrderHistory extends Component {
         })
     }
 
-    render() {
+    toggleExpand (index){
+        this.setState({
+            expandId: this.state.expandId ? null:index
+        })
+    }
 
+    render() {
         let orders = this.state.orders;
         let user = this.props.user;
         let ordersMap;
@@ -44,21 +51,29 @@ class OrderHistory extends Component {
         } else {
             ordersMap = orders.map((e, i) => {
                 let linesMap;
+                let shortDate = e.invoiceDate.slice(0,10)
+                let month = shortDate[5] + shortDate[6];
+                let day = shortDate[8] + shortDate[9];
+                let year = shortDate[0]+shortDate[1]+shortDate[2]+shortDate[3]
+                let formatDate = month+'/'+day+'/'+year
+                let orderTotal = Number(e.total) ? "$"+e.total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
                 linesMap = e.invoicelines.map((x, y) => {
+                    let linePrice = Number(x.price) ? "$"+x.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
                     return <div key={y} className="orderLine">
                         <div><img src={x.image} alt={x.product} className="orderimg"/></div>
                         <div>{x.product}</div>
-                        <div>${x.price}</div>
+                        <div>{linePrice}</div>
                         <div>{x.quantity}</div>
                     </div>
                 })
-                return <div key={i} className="eachOrder">
+                var expanded = this.state.expandId == i ? "orderDetExpanded":"orderDet"
+                return <div key={i} className="eachOrder" onClick={()=>this.toggleExpand(i)}>
                     <div className="initOrder">
                         <div>{e.invoiceNumber}</div>
-                        <div>{e.invoiceDate}</div>
-                        <div>{e.total}</div>
+                        <div>{formatDate}</div>
+                        <div>{orderTotal}</div>
                     </div>
-                    <div className="orderDet">
+                    <div className={`${expanded}`}>
                         {linesMap}
                     </div>
                 </div>
@@ -67,6 +82,9 @@ class OrderHistory extends Component {
 
         return (
             <div>
+                <div className="ordertable">
+                    <div>Order Number:</div><div>Order Date:</div><div>Order Total:</div>
+                    </div>
                 {ordersMap}
             </div>
         )

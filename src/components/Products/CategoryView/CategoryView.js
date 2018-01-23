@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import ProductTile from './ProductTile';
 import { Link } from 'react-router-dom';
-import {connect} from 'react-redux';
-import {getRedirect} from '../../../ducks/reducer';
+import { connect } from 'react-redux';
+import { getRedirect } from '../../../ducks/reducer';
 
 
 class CategoryView extends Component {
@@ -28,7 +28,7 @@ class CategoryView extends Component {
     }
 
     render() {
-        
+
         let list = this.state.category.map((e, i) => {
             return <Link key={i} to={`/product/${e.product_id}`} className="ptile">
                 <img src={e.product_image} alt={e.product_name} className="ptileimg" />
@@ -41,19 +41,21 @@ class CategoryView extends Component {
                 </div>
             </Link>
         })
-        return (
-            <div className="pmain">
+        return (<div className="categoryView">
+            <div className="catmain">
+            <Link to='/products' className="backbutton">Back to Categories<div className="line"></div></Link>
                 {list}
                 <div className="cartfooter"></div>
             </div>
+        </div>
         )
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         redirect: state.redirect
     }
 }
 
-export default connect(mapStateToProps, {getRedirect})(CategoryView);
+export default connect(mapStateToProps, { getRedirect })(CategoryView);

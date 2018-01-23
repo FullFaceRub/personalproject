@@ -126,7 +126,7 @@ class Checkout extends Component {
             phone: this.state.phone,
             cart: this.props.cart[0]
         }).then(response => {
-            alert('we are in business');
+            this.setState({modalIsOpen:false})
         });
     }
 
@@ -158,15 +158,15 @@ class Checkout extends Component {
                     <h2 className="subtitle">Shipping information</h2>
 
                     <div className="checkOutForm">
-                        <div className="field" ><h5>Your Name:</h5><input onChange={e => this.handleName(e.target.value)} value={user} id="name"></input></div>
-                        <div className="field" ><h5>Street Address:</h5><input onChange={e => this.handleAddress(e.target.value)} value={this.state.address} id="address"></input></div>
+                        <div className="field" ><h5>Your Name:</h5><input type='text' maxLength={20} onChange={e => this.handleName(e.target.value)} value={user} id="name"></input></div>
+                        <div className="field" ><h5>Street Address:</h5><input type='text' maxLength={30} onChange={e => this.handleAddress(e.target.value)} value={this.state.address} id="address"></input></div>
                         <div className="subCheckOutForm">
-                            <div className="field" ><h5>City:</h5><input onChange={e => this.handleCity(e.target.value)} value={this.state.city} id="city"></input></div>
-                            <div className="field" ><h5>State:</h5><input onChange={e => this.handleState(e.target.value)} value={this.state.state} id="state"></input></div>
-                            <div className="field" ><h5>Zip Code:</h5><input onChange={e => this.handleZipCode(e.target.value)} value={this.state.zipCode} id="zipcode"></input></div>
+                            <div className="field" ><h5>City:</h5><input type='text' maxLength={20} onChange={e => this.handleCity(e.target.value)} value={this.state.city} id="city"></input></div>
+                            <div className="field" ><h5>State:</h5><input type='text' maxLength={20} onChange={e => this.handleState(e.target.value)} value={this.state.state} id="state"></input></div>
+                            <div className="field" ><h5>Zip Code:</h5><input type='text' maxLength={5} onChange={e => this.handleZipCode(e.target.value)} value={this.state.zipCode} id="zipcode"></input></div>
                         </div>
-                        <div className="field" ><h5>Email:</h5><input onChange={e => this.handleEmail(e.target.value)} value={this.state.email} id="name"></input></div>
-                        <div className="field" ><h5>Phone Number:</h5><input onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
+                        <div className="field" ><h5>Email:</h5><input type='email' maxLength={20} onChange={e => this.handleEmail(e.target.value)} value={this.state.email} id="name"></input></div>
+                        <div className="field" ><h5>Phone Number:</h5><input type='tel' maxLength={11} onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
                     </div>
                     <div className="paybuttonouter">
                         <div className="checkouttotal">Total: ${total}</div>

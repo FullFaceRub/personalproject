@@ -87,7 +87,7 @@ app.put('/api/cartquantity/:user/:productid/:quantity', controller.changeQuantit
 app.get('/api/inspiration', controller.getInspired);// This endpoint retrieves the data for the Inspiration component
 app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);// This endpoint removes an item from the Cart component if its quantity reaches 0
 app.get('/api/orderhistory/:user', controller.getOrders);// This endpoint retrieves orderhistory of a customer based on their user id.
-
+app.put(`/api/cart/:user/:product/:quantity`, controller.updateCart)
 
 //***************************************************************************/
 app.listen(port, () => {

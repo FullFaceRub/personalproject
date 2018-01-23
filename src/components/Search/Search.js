@@ -29,12 +29,12 @@ class Search extends Component {
     render() {
         let searchParam = this.state.searchInput
         return (
-            <div className="search">
+            <form className="search">
                 <input placeholder="Search" className="searchbox" onChange={e => this.handleInputChange(e.target.value)} value={this.state.searchInput}></input>
                 <Link to={`/search/results/${searchParam}`}><button className="searchbutton"
                     onClick={this.handleMagClick}
                 ><img src={mag} alt="Search" className="mag" /></button></Link>
-            </div>
+            </form>
         )
     }
 }

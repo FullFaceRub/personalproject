@@ -132,5 +132,14 @@ module.exports = {
 
             res.status(200).send(results)
         })
+    },
+
+    updateCart: (req,res,next)=>{
+        const db = req.app.get('db');
+        const {user,product,quantity} = req.params;
+
+        db.updateCart([user,product,quantity]).then((cart)=>{
+            res.status(200).send(cart)
+        })
     }
 }

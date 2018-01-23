@@ -7,9 +7,9 @@ import {getUserInfo,getCart} from '../../ducks/reducer';
 class AccountLink extends Component {
 
     componentDidMount(){
-        // let user = this.props.user.customer_id
+        let user = this.props.user.customer_id
         this.props.getUserInfo();
-        // this.props.getCart(user)
+        this.props.getCart(user)
     }
 
     componentWillReceiveProps(nextProps){
@@ -20,10 +20,12 @@ class AccountLink extends Component {
 
     render() {
         let counter = 0;
-        let cartNum = this.props.cart[0] ? this.props.cart[0].map((e, i) => {
-            counter += Number(e.quantity)
-            return counter;
-        }) : 0
+        let cartArr = this.props.cart[0];
+
+        for(var i=0;i<cartArr.length;i++){
+            counter+=cartArr[i].quantity
+        }
+
         return (
             <div className='account'>
                 <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>

@@ -35,12 +35,20 @@ class Product extends Component {
         let user = this.props.user;
         let quantity = this.state.quantity;
         let redirect = this.props.redirect;
+        let cart = this.props.cart[0];
+        let presence = false;
+        for(var i = 0; i<cart.length; i++){
+            if (cart[i].product_id==product){
+                presence = true;
+            }
+        }
         if (quantity > 0) {
             if (!user.customer_id) {
                 window.location.href = process.env.REACT_APP_LOGIN + '?redirectto=' + redirect
+            } else if (presence===true) {
+                axios.put(`api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
             } else {
-                axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)
-            }
+            axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)}
         } else {
             alert('Please enter a quantity')
         }
@@ -70,7 +78,7 @@ class Product extends Component {
                     <div className="productdetailprice">
                         <h1>Price: ${e.product_price}</h1>
                         <div className="field" id="quantityfield">
-                            <input id="quantity" placeholder="Qty." type="text" pattern="[0-9]*" value={this.state.quantity} onChange={e => this.inputQuantity(e.target.value)}></input>
+                            <input id="quantity" placeholder="Qty." type="number" value={this.state.quantity} onChange={e => this.inputQuantity(e.target.value)}></input>
                             <button className="addToCart" onClick={this.addToCart}>Add to cart</button>
                         </div>
                     </div>
@@ -97,7 +105,8 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         product: state.product,
-        redirect: state.redirect
+        redirect: state.redirect,
+        cart: state.cart
     }
 }
 
