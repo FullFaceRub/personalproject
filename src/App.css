@@ -852,12 +852,17 @@ button:active {
 .closeouter {
   display: flex;
   flex-direction: row-reverse;
+  width: 100%;
 }
 
 .field {
   margin-top: 15px;
   display: flex;
   align-items: center;
+}
+
+.stripe {
+  background: black;
 }
 
 .field input {

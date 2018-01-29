@@ -30,6 +30,7 @@ class CategoryView extends Component {
     render() {
 
         let list = this.state.category.map((e, i) => {
+            let formatTotal = Number(e.product_price) ? "$"+e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
             return <Link key={i} to={`/product/${e.product_id}`} className="ptile">
                 <img src={e.product_image} alt={e.product_name} className="ptileimg" />
                 <div className="ptilebody">
@@ -37,7 +38,7 @@ class CategoryView extends Component {
                     <p>{e.product_description}</p>
                 </div>
                 <div className="ptileprice">
-                    <h1>${e.product_price}</h1>
+                    <h1>{formatTotal}</h1>
                 </div>
             </Link>
         })

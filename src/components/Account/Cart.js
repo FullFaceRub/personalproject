@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 import Checkout from './Checkout';
 
 class Cart extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            total: 0,
+        }
+    }
 
     componentDidMount() {
         let user = this.props.user.customer_id;
@@ -12,20 +19,32 @@ class Cart extends Component {
         this.props.getCart(user);
         let url = this.props.location.pathname
         this.props.getRedirect(url);
-    }
-
-    // componentWillReceiveProps(nextProps){
-        // let user = nextProps.user.customer_id;
-        // this.props.getUserInfo();
-        // this.props.getCart(user);
-    // }
-
-    render() {
         let cart = this.props.cart;
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
+        this.setState({
+            total: total
+        })
+    }
+
+    componentWillReceiveProps(nextProps){
+        let cart = nextProps.cart;
+        let total = cart[1].length < 1 ? 0 : cart[1][0].total;
+        this.setState({
+            total: total,
+        })
+
+
+
+    }
+
+    
+    render() {
+        let cart = this.props.cart
+        let user = this.props.user.customer_id;
+        let formatTotal = Number(this.state.total) ? "$"+this.state.total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
         let cartMap;
         if (cart[0].length < 1) {
-            cartMap = <h1>Your cart is empty or you just need to <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a></h1>
+            cartMap = <h1>Your cart is empty</h1>
         } else {
             cartMap = cart[0].map((e, i) => {
                 return <div key={i} className="carttile">
@@ -48,19 +67,6 @@ class Cart extends Component {
             })
         }
 
-        // if (cart.length < 1) {
-        //     cartDisplay = { cartMap }
-        // } else {
-        //     cartDisplay = <div> <div className="topoftable">
-        //         <h1>Product:</h1>
-        //         <h1>Quantity:</h1>
-        //         <h1>Price:</h1>
-        //     </div>
-        //         {cartMap}
-        //         <h1 className="carttotal">Your cart Total: ${cartTotal}</h1>
-        //     </div>
-        // }
-
         return (
             <div className="cartmain">
                 <div className="topoftable">
@@ -70,7 +76,7 @@ class Cart extends Component {
                 </div>
                 {cartMap}
                 <div className="carttotal">
-                    <h1 >${total}</h1>
+                    <h1 >{formatTotal}</h1>
                     <h1>Your cart Total:</h1>
                     <div></div>
                     <div></div>
@@ -82,7 +88,6 @@ class Cart extends Component {
                 </div>
                 <div className="cartfooter">
                 </div>
-                {/* {cartDisplay} */}
             </div>
         )
     }

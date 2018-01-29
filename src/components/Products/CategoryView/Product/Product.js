@@ -68,6 +68,7 @@ class Product extends Component {
             detailTab = this.props.product.length > 0 ? <Features features={product[0].product_features} /> : null
         }
         let productMap = this.props.product.map((e, i) => {
+            let formatTotal = Number(e.product_price) ? "$"+e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
             return <div key={i} className="productdetail">
                 <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
                 <div>
@@ -77,7 +78,7 @@ class Product extends Component {
                 <div className="productdetailbody">
                     <div className="description">{e.product_description}</div>
                     <div className="productdetailprice">
-                        <h1>Price: ${e.product_price}</h1>
+                        <h1>Price: {formatTotal}</h1>
                         <div className="field" id="quantityfield">
                             <input id="quantity" placeholder="Qty." type="number" value={this.state.quantity} onChange={e => this.inputQuantity(e.target.value)}></input>
                             <button className="addToCart" onClick={this.addToCart}>Add to cart</button>

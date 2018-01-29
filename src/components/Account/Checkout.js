@@ -158,14 +158,19 @@ class Checkout extends Component {
             phone: this.state.phone,
             cart: this.props.cart[0]
         }).then(response => {
+            this.props.getCart(this.props.user.customer_id)
             this.setState({ modalIsOpen: false, progressmodalIsOpen: false, successmodalIsOpen: true })
         });
+
     }
+
+    
 
     render() {
         let user = this.props.user.customer_name
         let cart = this.props.cart;
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;
+        let formatTotal = Number(total) ? "$"+total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
         let { name, address, city, state, zipCode, email, phone } = this.state
         const isEnabled = name.length > 0
             && address.length > 0
@@ -201,7 +206,7 @@ class Checkout extends Component {
                         <div className="field" ><h5>Phone Number:</h5><input type='tel' maxLength={11} onChange={e => this.handlePhone(e.target.value)} value={this.state.phone} id="state"></input></div>
                     </div>
                     <div className="paybuttonouter">
-                        <div className="checkouttotal">Total: ${total}</div>
+                        <div className="checkouttotal">Total: {formatTotal}</div>
                         <div className="paybutton">
                             <StripeCheckout
                                 name={'Your Order'}

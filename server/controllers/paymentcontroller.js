@@ -42,11 +42,19 @@ module.exports = {
                     db.createInvoiceline([invoiceId, productId, qty]).then((line)=>{
                     })                    
                 }
-                db.clearCart([user]).then((emptyCart)=>{})
-                res.status(200);
+                db.clearCart([user]).then((emptyCart)=>{
+                    var cart = []
+                    db.getCart([user]).then(resp => {
+                       cart.push(resp)
+                        db.getCartTotal([user]).then(total => {
+                            cart.push(total)
+                            res.send(cart);
+                        })
+                    })
+
+                })
             })
 
-            return res.sendStatus(200);
         });
     }
 }
