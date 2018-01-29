@@ -31,6 +31,7 @@ class NavBar extends Component {
         //set both of these to single variable to be rendered depending on condition
         return (
             <div>
+                
                 <nav className="navbar">
 
                     <Link to='/' className="navlinks">Home<div className="line"></div></Link>

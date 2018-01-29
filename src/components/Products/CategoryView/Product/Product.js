@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getUserInfo, getProduct, getRedirect } from '../../../../ducks/reducer';
+import { getUserInfo, getProduct, getRedirect, getCart } from '../../../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import { Dimensions, Reviews, Features } from './ProductTabs';
 
@@ -38,7 +38,7 @@ class Product extends Component {
         let cart = this.props.cart[0];
         let presence = false;
         for(var i = 0; i<cart.length; i++){
-            if (cart[i].product_id==product){
+            if (cart[i].product_id===product){
                 presence = true;
             }
         }
@@ -48,7 +48,7 @@ class Product extends Component {
             } else if (presence===true) {
                 axios.put(`api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
             } else {
-            axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)}
+            axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => this.props.getCart(user.customer_id))}
         } else {
             alert('Please enter a quantity')
         }
@@ -111,4 +111,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo, getProduct, getRedirect })(Product);
+export default connect(mapStateToProps, { getUserInfo, getProduct, getRedirect, getCart })(Product);

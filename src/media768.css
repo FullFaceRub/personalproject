@@ -1,0 +1,43 @@
+@media (max-width: 768px){
+    .app {
+        background-size: 600px 425px;
+    }
+
+    .mainheader {
+        padding-left: 45px;
+        padding-right: 75px;
+    }
+
+    .landing {
+        font-size: 30px;
+        top: 215px;
+        left: 220px;
+    }
+
+    .navbarouter {
+        display: none;
+    }
+
+    .searchouter {
+        display: none;
+    }
+
+    .hammenu {
+        display: block;
+        border-radius: 50%;
+        width: 40px;
+    }
+
+    .hammenu:active {
+        border: solid;
+        border-color: white;
+        border-width: 2px;
+    }
+
+    .dropdownexpanded {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        height: 400px;
+    }
+}

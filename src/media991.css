@@ -1,0 +1,62 @@
+@media (max-width: 991px){
+    .app {
+        background-size: 650px 475px;
+    }
+
+    .mainheader {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .landing {
+        font-size: 38px;
+        top: 210px;
+        left: 305px;
+    }
+
+    .navbar {
+        width: 450px;
+    }
+
+    .subnav {
+        left: 280px;
+    }
+
+    .content {
+        height: 250px;
+    }
+
+    .contenttitle {
+        font-size: 22px;
+    }
+
+    .pcategory {
+        width: 400px;
+        height: 160px;
+        font-size: 32px;
+    }
+
+    .ptile {
+        height: 125px;
+    }
+
+    .backbutton {
+        right: 165px;
+    }
+
+    .pbackbutton {
+        right: 200px;
+    }
+
+    .productdetail {
+        width: 68%;
+    }
+    
+    .carttotal {
+        width: 80%;
+    }
+
+    .checkout {
+        width: 65%;
+    }
+}

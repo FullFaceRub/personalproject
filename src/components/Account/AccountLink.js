@@ -13,9 +13,8 @@ class AccountLink extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        let user = nextProps.user.customer_id;
-        this.props.getUserInfo();
-        this.props.getCart(user);
+        // let user = nextProps.user.customer_id;
+        // this.props.getCart(user);
     }
 
     render() {

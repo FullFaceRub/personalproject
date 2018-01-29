@@ -46,7 +46,7 @@ class OrderHistory extends Component {
         let orders = this.state.orders;
         let user = this.props.user;
         let ordersMap;
-        if (user.length == 0) {
+        if (user.length === 0) {
             ordersMap = <h1>Please <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a> in order to view your account</h1>
         } else {
             ordersMap = orders.map((e, i) => {
@@ -66,7 +66,7 @@ class OrderHistory extends Component {
                         <div>{x.quantity}</div>
                     </div>
                 })
-                var expanded = this.state.expandId == i ? "orderDetExpanded":"orderDet"
+                var expanded = this.state.expandId === i ? "orderDetExpanded":"orderDet"
                 return <div key={i} className="eachOrder" onClick={()=>this.toggleExpand(i)}>
                     <div className="initOrder">
                         <div>{e.invoiceNumber}</div>
