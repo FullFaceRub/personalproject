@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import ProductTile from './ProductTile';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRedirect } from '../../../ducks/reducer';

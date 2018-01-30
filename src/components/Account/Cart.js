@@ -40,7 +40,6 @@ class Cart extends Component {
     
     render() {
         let cart = this.props.cart
-        let user = this.props.user.customer_id;
         let formatTotal = Number(this.state.total) ? "$"+this.state.total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
         let cartMap;
         if (cart[0].length < 1) {

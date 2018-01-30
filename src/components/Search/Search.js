@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import mag from '../../images/magglass.png';
-// import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 class Search extends Component {

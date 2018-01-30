@@ -7,7 +7,6 @@ import Product from './components/Products/CategoryView/Product/Product';
 import Inspiration from './components/Inspiration/Inspiration';
 import CategoryView from './components/Products/CategoryView/CategoryView';
 import SearchResults from './components/Search/SearchResults';
-// import OrderHistory from './components/Account/OrderHistory';
 import Cart from './components/Account/Cart';
 import FailedLogin from './components/Account/FailedLogin';
 import Account from './components/Account/Account';

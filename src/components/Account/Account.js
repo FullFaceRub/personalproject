@@ -21,17 +21,13 @@ class Account extends Component {
         const user = this.props.user;
         let accountDisplay;
         if (!user) {
-            // return (
             accountDisplay = <div className="navlinks">
                 <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a> to see your account info.
             </div>
-            // )
         } else {
-            // return (
             accountDisplay = <div className='accountmain'>
                 <div className="accounttop">
                     <div className="navlinks">Your Account<div className="line"></div></div>
-                    {/* <Link to="/account/cart"><img src={cart} alt="cart" className="cart" /></Link> */}
                     <a href="http://localhost:8080/auth/logout"><button className="logout">Logout</button></a>
                 </div>
                 <div>
@@ -46,7 +42,6 @@ class Account extends Component {
                     </div>
                 </div>
             </div>
-            // )
         }
 
 

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { getUserInfo, getRedirect } from '../../ducks/reducer';
 import Login from '../Account/Login';
 import AccountLink  from '../Account/AccountLink';
-// import UserProfile from 
 
 class NavBar extends Component {
 
     componentDidMount() {
         this.props.getUserInfo()
     }
+    
 
 
     render() {
@@ -26,9 +26,6 @@ class NavBar extends Component {
             accountLink = <AccountLink />
         }
 
-        //if session user is present, show session user name and route to user profile component on click
-        //if session user is not present, show login link
-        //set both of these to single variable to be rendered depending on condition
         return (
             <div>
                 
@@ -38,8 +35,6 @@ class NavBar extends Component {
                     <Link to='/about' className="navlinks">About<div className="line"></div></Link>
                     <Link to='/inspiration' className="navlinks">Inspiration<div className="line"></div></Link>
                     <Link to='/products' className="navlinks">Products<div className="line"></div></Link>
-                    {/* <a href={process.env.REACT_APP_LOGIN} className="navlinks">Login<div className="line"></div></a>
-                    <Account/> */}
                     {accountLink}
                 </nav>
 

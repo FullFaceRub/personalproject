@@ -18,7 +18,6 @@ class OrderHistory extends Component {
     componentDidMount() {
         let user = this.props.user.customer_id
         this.props.getUserInfo();
-        // this.props.getOrderHistory(user)
         axios.get(`api/orderhistory/${user}`).then((history) => {
             this.setState({
                 orders: history.data
