@@ -21,10 +21,12 @@ module.exports = {
 
     searchProduct: (req, res) => {
         const standard = req.params.query.toUpperCase();
+        const lower = req.params.query.toLowerCase();
         const product = '%' + standard + '%';
+        const desc = '%' + lower + '%';
         const db = req.app.get('db');
 
-        db.searchreadproduct([product]).then((product) => {
+        db.searchreadproduct([product, desc]).then((product) => {
             res.status(200).send(product)
         })
     },
