@@ -48,6 +48,46 @@ body {
   width: 141px;
 }
 
+.logoouter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.wave {
+  height: 20px;
+  width: 150px;
+  background-image: url("images/soundwave.jpg");
+  background-repeat: repeat;
+  background-position: left;
+  background-size: 75px 20px;
+  overflow: hidden;
+  animation: wave 6s linear infinite;
+  margin-top: 5px;
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0px;
+  }
+  25% {
+    opacity: .5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: .5;
+  }
+
+  100% {
+    background-position: 150px;
+  }
+}
+
 .landing {
   color: silver;
   font-family: 'Abel', sans-serif;

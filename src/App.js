@@ -36,7 +36,10 @@ class App extends Component {
       <div className="app">
         {/* {aos.init()} */}
         <header className="mainheader">
-          <img src={logo} alt="logo" className="logo" />
+          <div className="logoouter">
+            <img src={logo} alt="logo" className="logo" />
+            <div className="wave"></div>
+          </div>
           <img src={ham} alt="menu" className="hammenu" onClick={this.toggleExpand} />
           <div className="navbarouter">
             <NavBar />
