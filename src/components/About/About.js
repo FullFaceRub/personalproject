@@ -16,11 +16,11 @@ class About extends Component {
     render() {
         return (
             <div className="page">
-                <div className='subnav'>
-                    <Link to='/about' className='subnavlinks'>About<div className="line"></div></Link>
-                    <Link to='/about/contact' className='subnavlinks'>Contact<div className="line"></div></Link>
-                </div>
                 <div className='main'>
+                    <div className='subnav'>
+                        <Link to='/about' className='subnavlinks'>About<div className="line"></div></Link>
+                        <Link to='/about/contact' className='subnavlinks'>Contact<div className="line"></div></Link>
+                    </div>
                     <Switch>
                         <Route exact path='/about' render={() => <div className='content'>
                             <h1 className='contenttitle'>About Bowers and Wilkins</h1>

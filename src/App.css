@@ -2,7 +2,6 @@ html, body{
   height: 100%;
 }
 
-@media (max-width: 1440px) and (min-width: 1200px){
 body {
   background: black;
   font-family: 'Abel', sans-serif;
@@ -10,15 +9,18 @@ body {
 }
 
 .app {
-  background: radial-gradient(closest-corner at 40% 40%, rgba(0,0,0,0),rgba(0,0,0,1)), url("images/800.jpg");
+  animation-name: fadeIn;
+  animation-duration: .8s;
+}
+
+.mainbody {
+  background: radial-gradient(closest-corner at 33% 40%, rgba(0,0,0,0),rgba(0,0,0,1)), url("images/800.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
-  background-size: 750px 550px;
-  animation-name: fadeIn;
-  animation-duration: .8s;
+  background-size: contain;
 }
 
 .mainheader {
@@ -57,6 +59,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 150px;
+  height: 40px;
 }
 
 .wave {
@@ -95,12 +98,12 @@ body {
 .landing {
   color: silver;
   font-family: 'Abel', sans-serif;
-  font-size: 45px;
+  font-size: 44px;
   position: absolute;
-  top: 240px;
-  left: 410px;
+  top: 39%;
+  left: 33.5%;
   height: 250px;
-  width: 40%;
+  width: 35%;
   font-weight: lighter;
   animation-name: fadeIn;
   animation-duration: 2s;
@@ -113,11 +116,6 @@ body {
   to{
     opacity: 1;
   }
-}
-
-.page {
-  position: relative;
-  margin-top: 120px;
 }
 
 .navbar {
@@ -150,12 +148,12 @@ body {
 }
 
 .subnav {
-  width: 200px;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: -70px;
-  left: 405px;
+  top: -9%;
+  left: 25%;
   margin-top: 10px;
 }
 
@@ -168,13 +166,6 @@ body {
 
 .subnavlinks:hover > .line {
   width:100%;
-}
-
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 80px;
 }
 
 .search {
@@ -291,8 +282,8 @@ body {
 
 .backbutton {
   position: absolute;
-  top: 10px;
-  right: 225px;
+  top: .4%;
+  right: 20%;
 }
 
 .backbutton:hover > .line {
@@ -358,8 +349,8 @@ body {
   padding: 15px;
   align-items: center;
   border: solid;
-  border-width: 0px;
-  border-color: silver;
+  border-color: rgba(192,192,192,0);
+  border-width: 1px;
   overflow-y: hidden;
   animation-name: fadeIn;
   animation-duration: .6s;
@@ -367,7 +358,7 @@ body {
 }
 
 .ptile:hover {
-  border-width:1px;
+  border-color: rgba(192,192,192,1);
   background: rgba(0,0,0,.25);
 }
 
@@ -413,7 +404,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width:60%;
+  width: 60%;
   margin:auto;
   margin-top:85px;
   padding-top:30px;
@@ -423,7 +414,7 @@ body {
   border: solid;
   border-width: 1px;
   border-color: silver;
-  padding-bottom: 30px;
+  padding-bottom: 25px;
   /* padding-left: 15px; */
   padding-right: 25px;
 }
@@ -439,8 +430,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 .pbackbutton {
   position: absolute;
-  top: 100px;
-  right: 275px;
+  top: 17%;
+  right: 22%;
 }
 
 .pbackbutton:hover > .line {
@@ -452,13 +443,13 @@ input[type=number]::-webkit-inner-spin-button {
   border: solid;
   border-width: 1px;
   height: 125px;
-  width: 300px;
+  width: 80%;
   padding: 15px;
   overflow-y: scroll;
 }
 
 .description {
-  width: 300px;
+  width: 80%;
   line-height: 25px;
 }
 
@@ -467,11 +458,12 @@ input[type=number]::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: space-around;
   height: 420px;
+  align-items: center;
 }
 
 .producttabs {
   display: flex;
-  width: 300px;
+  width: 80%;
   justify-content: space-around;
 }
 
@@ -482,7 +474,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-color: silver;
   border-width: 1px;
   padding: 10px;
-  width: 100px;
+  width: 34%;
   height: 45px;
   transition: .6s;
 }
@@ -490,6 +482,7 @@ input[type=number]::-webkit-inner-spin-button {
 .detailtable {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .productsubnav:hover {
@@ -501,6 +494,7 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 80%;
 }
 
 .productname {
@@ -510,7 +504,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .productdetailimg {
-  width:350px;
+  max-width:350px;
+  margin-top: 15px;
 }
 
 .page {
@@ -519,17 +514,18 @@ input[type=number]::-webkit-inner-spin-button {
   animation-duration: 1s;
 }
 
-
-
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 120px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content {
-  width: 640px;
+  width: 65%;
   line-height: 25px;
   display: flex;
   flex-direction: column;
@@ -544,7 +540,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .contenttitle {
   font-size: 25px;
-  width: 640px;
+  width: 100%;
   align-content: left;
 }
 
@@ -1050,7 +1046,7 @@ button:active {
   border-color: silver;
   border-radius: 5px;
   height: 25px;
-  width: 225px;
+  width: 50%;
 }
 
 .progressBar {
@@ -1084,4 +1080,3 @@ button:active {
   }
 }
 
-}
