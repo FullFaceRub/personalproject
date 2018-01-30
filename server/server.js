@@ -65,7 +65,7 @@ app.get('/auth', noredirect.NoRedirect, passport.authenticate('auth0'));
 app.get('/auth/callback', noredirect.authenticate);
 app.get('/auth/me', (req, res) => {
     if (!req.user) {
-        res.status(404).send('User not found.');
+        res.status(200).send('User not found.');
     } else {
         res.status(200).send(req.user);
     }

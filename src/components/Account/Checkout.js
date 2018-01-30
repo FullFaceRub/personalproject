@@ -80,6 +80,7 @@ class Checkout extends Component {
         let user = this.props.user.customer_id;
         this.props.getUserInfo();
         this.props.getCart(user);
+        Modal.setAppElement('body');
     }
 
     openModal() {

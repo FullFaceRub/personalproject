@@ -10,7 +10,7 @@ class Product extends Component {
         super();
 
         this.state = {
-            quantity: null
+            quantity: 0
         }
         this.addToCart = this.addToCart.bind(this);
         this.inputQuantity = this.inputQuantity.bind(this);

@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   toggleExpand() {
-    let drop = this.state.dropdown == "dropdown" ? "dropdownexpanded" : "dropdown"
+    let drop = this.state.dropdown === "dropdown" ? "dropdownexpanded" : "dropdown"
     this.setState({
       dropdown: drop
     })
@@ -34,7 +34,15 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        {/* {aos.init()} */}
+        <div className={this.state.dropdown}>
+          <Search />
+          <NavBar />
+        </div>
+        <section className="mainbody">
+          {routes}
+        </section>
+        <footer className="mainfooter">
+        </footer>
         <header className="mainheader">
           <div className="logoouter">
             <img src={logo} alt="logo" className="logo" />
@@ -48,15 +56,6 @@ class App extends Component {
             <Search />
           </div>
         </header>
-        <div className={this.state.dropdown}>
-          <Search />
-          <NavBar />
-        </div>
-        <section className="mainbody">
-          {routes}
-        </section>
-        <footer className="mainfooter">
-        </footer>
       </div>
     );
   }
