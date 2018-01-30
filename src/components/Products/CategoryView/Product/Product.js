@@ -14,6 +14,8 @@ class Product extends Component {
         }
         this.addToCart = this.addToCart.bind(this);
         this.inputQuantity = this.inputQuantity.bind(this);
+        this.increase = this.increase.bind(this);
+        this.decrease = this.decrease.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +32,26 @@ class Product extends Component {
         })
     }
 
+    increase() {
+        let newQty = this.state.quantity + 1
+        this.setState({
+            quantity: newQty
+        })
+    }
+
+    decrease() {
+        let newQty
+        if (this.state.quantity > 1) {
+            newQty = this.state.quantity - 1;
+        }
+        else {
+            newQty = 0
+        }
+        this.setState({
+            quantity: newQty
+        })
+    }
+
     addToCart() {
         let product = this.props.match.params.product;
         let user = this.props.user;
@@ -37,18 +59,19 @@ class Product extends Component {
         let redirect = this.props.redirect;
         let cart = this.props.cart[0];
         let presence = false;
-        for(var i = 0; i<cart.length; i++){
-            if (cart[i].product_id===product){
+        for (var i = 0; i < cart.length; i++) {
+            if (cart[i].product_id === product) {
                 presence = true;
             }
         }
         if (quantity > 0) {
             if (!user.customer_id) {
                 window.location.href = process.env.REACT_APP_LOGIN + '?redirectto=' + redirect
-            } else if (presence===true) {
-                axios.put(`api/cart/${user.customer_id}/${product}/${quantity}`).then(res=>res.data)
+            } else if (presence === true) {
+                axios.put(`api/cart/${user.customer_id}/${product}/${quantity}`).then(res => res.data)
             } else {
-            axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => this.props.getCart(user.customer_id))}
+                axios.post(`/api/cart/${user.customer_id}/${product}/${quantity}`).then(res => this.props.getCart(user.customer_id))
+            }
         } else {
             alert('Please enter a quantity')
         }
@@ -68,7 +91,7 @@ class Product extends Component {
             detailTab = this.props.product.length > 0 ? <Features features={product[0].product_features} /> : null
         }
         let productMap = this.props.product.map((e, i) => {
-            let formatTotal = Number(e.product_price) ? "$"+e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
+            let formatTotal = Number(e.product_price) ? "$" + e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") : "$0.00";
             return <div key={i} className="productdetail">
                 <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
                 <div>
@@ -80,7 +103,11 @@ class Product extends Component {
                     <div className="productdetailprice">
                         <h1>Price: {formatTotal}</h1>
                         <div className="field" id="quantityfield">
-                            <input id="quantity" placeholder="Qty." type="number" value={this.state.quantity} onChange={e => this.inputQuantity(e.target.value)}></input>
+                            <input id="quantity" placeholder="Qty." type="number" disabled="disabled" value={this.state.quantity} onChange={e => this.inputQuantity(e.target.value)}></input>
+                            <div className="quantityControl">
+                                <button onClick={this.increase}>+</button>
+                                <button onClick={this.decrease}>-</button>
+                            </div>
                             <button className="addToCart" onClick={this.addToCart}>Add to cart</button>
                         </div>
                     </div>

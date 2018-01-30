@@ -53,8 +53,25 @@ module.exports = {
         const quantity = req.params.quantity;
         const db = req.app.get('db');
 
-        db.addToCart([user, product, quantity]).then((product) => {
-            res.status(200).send(product)
+        db.getCart([user]).then((carts) => {
+            let newQty;
+            for (var i = 0; i < carts.length; i++) {
+                if (carts[i].customer_id == user && carts[i].product_id == product) {
+                    newQty = Number(quantity) + Number(carts[i].quantity)
+
+
+                }
+
+            }
+            if (newQty) {
+                db.changeQuantity([+user, +product, +newQty]).then((qty) => {
+                    res.send(qty)
+                })
+            } else {
+                db.addToCart([user, product, quantity]).then((product) => {
+                    res.status(200).send(product)
+                })
+            }
         })
     },
 
@@ -134,11 +151,11 @@ module.exports = {
         })
     },
 
-    updateCart: (req,res,next)=>{
+    updateCart: (req, res, next) => {
         const db = req.app.get('db');
-        const {user,product,quantity} = req.params;
+        const { user, product, quantity } = req.params;
 
-        db.updateCart([user,product,quantity]).then((cart)=>{
+        db.updateCart([user, product, quantity]).then((cart) => {
             res.status(200).send(cart)
         })
     }
