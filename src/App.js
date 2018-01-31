@@ -4,6 +4,11 @@ import './App.css';
 import './media1199.css';
 import './media991.css';
 import './media768.css';
+import './media1250.css';
+import './media1137.css';
+import './media1047.css';
+import './media981.css';
+import './media881.css';
 import 'animate.css/animate.min.css';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';
@@ -14,30 +19,28 @@ import routes from './routes';
 
 
 class App extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = {
-      dropdown: "dropdown"
-    }
+  //   this.state = {
+  //     dropdown: "dropdown"
+  //   }
 
-    this.toggleExpand = this.toggleExpand.bind(this);
-  }
+  //   this.toggleExpand = this.toggleExpand.bind(this);
+  // }
 
-  toggleExpand() {
-    let drop = this.state.dropdown === "dropdown" ? "dropdownexpanded" : "dropdown"
-    this.setState({
-      dropdown: drop
-    })
-  }
+  // toggleExpand() {
+  //   let drop = this.state.dropdown === "dropdown" ? "dropdownexpanded" : "dropdown"
+  //   this.setState({
+  //     dropdown: drop
+  //   })
+  // }
 
   render() {
     return (
       <div className="app">
-        <div className={this.state.dropdown}>
-          <Search />
-          <NavBar />
-        </div>
+        {/* <div className="mainnav"> */}
+        {/* </div> */}
         <section className="mainbody">
           {routes}
         </section>
@@ -48,12 +51,16 @@ class App extends Component {
             <img src={logo} alt="logo" className="logo" />
             <div className="wave"></div>
           </div>
-          <img src={ham} alt="menu" className="hammenu" onClick={this.toggleExpand} />
-          <div className="navbarouter">
-            <NavBar />
-          </div>
-          <div className="searchouter">
-            <Search />
+          <NavBar />
+          <Search />
+          <img src={ham} alt="menu" className="hammenu" />
+          <div className="dropdown">
+            <div className="searchouter">
+              <Search />
+            </div>
+            <div className="navbarouter">
+              <NavBar />
+            </div>
           </div>
         </header>
       </div>

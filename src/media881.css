@@ -1,0 +1,29 @@
+@media (max-width: 882px) {
+    .landing {
+        left: 28%;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .wave {
+        width: 125px;
+    }
+
+    .logoouter {
+        width: 125px;
+    }
+
+    .search {
+        width: 125px;
+    }
+
+    .searchbox {
+        width: 115px;
+    }
+
+    .navlinks {
+        font-size: 18px;
+    }
+}

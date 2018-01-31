@@ -1,3 +1,31 @@
-@media (max-width: 768px) and (min-width: 426px){
-    
+@media (max-width: 790px){
+
+    .landing {
+        width: 100%;
+        left: 1%;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .hammenu {
+        display: block;
+        width: 45px;
+        border-radius: 50%;
+    }
+
+    .dropdown {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 300px;
+        margin-right: -65%;
+        margin-top: 100px;
+    }
+
 }
