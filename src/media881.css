@@ -1,6 +1,6 @@
 @media (max-width: 882px) {
     .landing {
-        left: 28%;
+        left: 25%;
     }
 
     .logo {
@@ -24,6 +24,6 @@
     }
 
     .navlinks {
-        font-size: 18px;
+        font-size: 16px;
     }
 }

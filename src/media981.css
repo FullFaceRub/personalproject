@@ -3,4 +3,26 @@
         width: 43%;
         left: 30%;
     }
+
+    .navlinks {
+        font-size: 18px;
+    }
+
+    .cart {
+        height: 20px;
+    }
+
+    .cartCirc {
+        width: 10px;
+        height: 10px;
+    }
+
+    .cartNum {
+        font-size: 8px;
+        height: 8px;
+    }
+
+    .account {
+        width: 110px;
+    }
 }
