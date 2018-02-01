@@ -48,16 +48,16 @@ class MobileNav extends Component {
 
         return (
             <nav className="mobnav">
-                <form className="mobsearch">
+                <form className="mobsearch mobchild">
                     <input placeholder="Search" className="searchbox" onChange={e => this.handleInputChange(e.target.value)} value={this.state.searchInput}></input>
                     <Link to={`/search/results/${searchParam}`}><button className="searchbutton"
                         onClick={this.handleMagClick}
                     ><img src={mag} alt="Search" className="mag" /></button></Link>
                 </form>
-                <Link to='/' className="mobnavlinks">Home<div className="line"></div></Link>
-                <Link to='/about' className="mobnavlinks">About<div className="line"></div></Link>
-                <Link to='/inspiration' className="mobnavlinks">Inspiration<div className="line"></div></Link>
-                <Link to='/products' className="mobnavlinks">Products<div className="line"></div></Link>
+                <Link to='/' className="mobnavlinks mobchild">Home<div className="line"></div></Link>
+                <Link to='/about' className="mobnavlinks mobchild">About<div className="line"></div></Link>
+                <Link to='/inspiration' className="mobnavlinks mobchild">Inspiration<div className="line"></div></Link>
+                <Link to='/products' className="mobnavlinks mobchild">Products<div className="line"></div></Link>
                 {accountLink}
             </nav>
         )

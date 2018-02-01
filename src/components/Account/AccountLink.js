@@ -21,7 +21,7 @@ class AccountLink extends Component {
         }
 
         return (
-            <div className='account'>
+            <div className='account mobchild'>
                 <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>
                 <Link to="/account/cart" className="cartcontainer"><img src={cart} alt="cart" className="cart" />
                     <div className="cartCirc">

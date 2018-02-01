@@ -46,6 +46,7 @@ class Cart extends Component {
             cartMap = <h1>Your cart is empty</h1>
         } else {
             cartMap = cart[0].map((e, i) => {
+                let formatPrice = Number(e.product_price) ? "$"+e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"): "$0.00";
                 return <div key={i} className="carttile">
                     <Link to={`/product/${e.product_id}`} className="carttilebody">
                         <img src={e.product_image} alt={e.product_name} className="ptileimg" />
@@ -60,7 +61,7 @@ class Cart extends Component {
                         </div>
                     </div>
                     <div className="ptileprice">
-                        <h1>${e.product_price}</h1>
+                        <h1>{formatPrice}</h1>
                     </div>
                 </div>
             })

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const passport = require('passport');
 
 module.exports = {
@@ -8,8 +9,8 @@ module.exports = {
 
     authenticate: (req,res,next)=>{
         let auth = passport.authenticate('auth0', {
-            successRedirect: `http://localhost:3000/#${req.session.redirect}`,
-            failureRedirect: 'http://localhost:3000/failedlogin',
+            successRedirect: `${process.env.REDIRECT_STRING}#${req.session.redirect}`,
+            failureRedirect: `${process.env.REDIRECT_STRING}failedlogin`,
         })
 
         auth(req,res,next);

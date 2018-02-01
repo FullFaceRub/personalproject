@@ -103,7 +103,7 @@ export function decrementCart(customer, product, quantity) {
 }
 
 export function getSearch(query) {
-    let searchData = axios.get('http://localhost:8080/api/products/search/' + query).then(res => {
+    let searchData = axios.get('/api/products/search/' + query).then(res => {
         return res.data
     })
 

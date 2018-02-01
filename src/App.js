@@ -16,6 +16,7 @@ import MobileNav from './components/NavBar/MobileNav';
 import logo from './images/logo.png';
 import ham from './images/hamburger6.jpg';
 import routes from './routes';
+import {Link} from 'react-router-dom';
 
 
 
@@ -46,10 +47,10 @@ class App extends Component {
         <footer className="mainfooter">
         </footer>
         <header className="mainheader">
-          <div className="logoouter">
+          <Link to="/" className="logoouter">
             <img src={logo} alt="logo" className="logo" />
             <div className="wave"></div>
-          </div>
+          </Link>
           <NavBar />
           <Search />
           <img src={ham} alt="menu" className="hammenu" />

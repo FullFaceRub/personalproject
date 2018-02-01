@@ -72,7 +72,7 @@ app.get('/auth/me', (req, res) => {
 })
 app.get('/auth/logout', function (req, res) {
     req.logOut();
-    res.redirect('http://localhost:3000/')
+    res.redirect('/')
 })
 //Payment endpoint
 app.post('/api/payment', paymentcontroller.payment);// This endpoint also creates an invoice on the invoices table

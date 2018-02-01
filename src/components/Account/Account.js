@@ -28,7 +28,7 @@ class Account extends Component {
             accountDisplay = <div className='accountmain'>
                 <div className="accounttop">
                     <div className="navlinks">Your Account<div className="line"></div></div>
-                    <a href="http://localhost:8080/auth/logout"><button className="logout">Logout</button></a>
+                    <a href="/auth/logout"><button className="logout">Logout</button></a>
                 </div>
                 <div>
                     <Switch>
