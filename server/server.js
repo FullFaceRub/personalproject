@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUnitialized: true
+    saveUninitialized: true
 }))
 app.use(passport.initialize());
 app.use(passport.session());
