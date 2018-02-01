@@ -37,10 +37,10 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     
     let { displayName, picture, user_id } = profile; //deconstruct items from profile object
-    const db = app.get('db'); //connect database
+console.log(user_id)
+ const db = app.get('db'); //connect database
 
     db.readcustomer([user_id]).then(function (customers) {
-        console.log(customers);
         if (!customers[0]) {
             db.addcustomer([displayName, user_id])
                 .then(customer => {
