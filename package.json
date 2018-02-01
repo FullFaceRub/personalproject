@@ -52,6 +52,5 @@
   "bugs": {
     "url": "https://github.com/FullFaceRub/personalproject/issues"
   },
-  "homepage": "https://github.com/FullFaceRub/personalproject#readme",
   "proxy": "http://localhost:8080"
 }
