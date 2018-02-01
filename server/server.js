@@ -35,14 +35,16 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.CALLBACK,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
+    
     let { displayName, picture, user_id } = profile; //deconstruct items from profile object
     const db = app.get('db'); //connect database
 
     db.readcustomer([user_id]).then(function (customers) {
+        console.log(customers);
         if (!customers[0]) {
             db.addcustomer([displayName, user_id])
-                .then(customers => {
-                    return done(null, customers[0].customer_id)
+                .then(customer => {
+                    return done(null, customer[0].customer_id)
                 })
         } else {
             return done(null, customers[0].customer_id)
