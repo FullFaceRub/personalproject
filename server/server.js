@@ -13,6 +13,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const noredirect = require('./middleware/NoRedirect');
 const paymentcontroller = require('./controllers/paymentcontroller');
 
+app.use( express.static( `${__dirname}/../build`));
 app.use(cors());
 app.use(bodyParser.json());
 
