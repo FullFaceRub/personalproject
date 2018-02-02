@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
+import './media1440.css';
 import './media1250.css';
 import './media1199.css';
 import './media1137.css';
@@ -9,6 +10,10 @@ import './media991.css';
 import './media981.css';
 import './media881.css';
 import './media768.css';
+import './media558.css';
+import './media480.css';
+import './media425.css';
+import './media375.css';
 import 'animate.css/animate.min.css';
 import NavBar from './components/NavBar/NavBar';
 import Search from './components/Search/Search';

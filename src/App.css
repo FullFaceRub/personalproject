@@ -14,7 +14,7 @@ body {
 }
 
 .mainbody {
-  background: radial-gradient(closest-corner at 33% 40%, rgba(0,0,0,0),rgba(0,0,0,1)), url("images/800.jpg");
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 40%), url("images/800.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

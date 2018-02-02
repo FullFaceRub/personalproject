@@ -1,3 +1,10 @@
 @media (max-width: 425px){
-    
+    .mainheader {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .landing {
+        top: 44%;
+    }
 }

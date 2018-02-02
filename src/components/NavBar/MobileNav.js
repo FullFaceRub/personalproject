@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUserInfo, getRedirect, getCart } from '../../ducks/reducer';
-import Login from '../Account/Login';
 import mag from '../../images/magglass.png';
 import cart from '../../images/carticon.png';
 
@@ -57,7 +56,6 @@ class MobileNav extends Component {
 
         if (!user.auth_id) {
             accountLink = <a href={process.env.REACT_APP_LOGIN + '?redirectto=' + redirect} className={links}>Login<div className="line"></div></a>
-            // accountLink = <Login/>
         } else {
             accountLink = <div className={account}>
                 <Link to='/account' className="navlinks">Your Account<div className="line"></div></Link>
