@@ -13,7 +13,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const noredirect = require('./middleware/NoRedirect');
 const paymentcontroller = require('./controllers/paymentcontroller');
 
-app.use( express.static( `${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -35,10 +35,9 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.CALLBACK,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-    
+
     let { displayName, picture, user_id } = profile; //deconstruct items from profile object
-console.log(user_id)
- const db = app.get('db'); //connect database
+    const db = app.get('db'); //connect database
 
     db.readcustomer([user_id]).then(function (customers) {
         if (!customers[0]) {

@@ -6,7 +6,8 @@ const initialState = {
     cart: [[], []],
     product: [],
     search: [],
-    redirect: '/'
+    redirect: '/',
+    slide: false
 }
 
 //Types
@@ -17,9 +18,17 @@ const DECREMENT_CART = 'DECREMENT_CART'
 const INCREMENT_CART = 'INCREMENT_CART'
 const GET_SEARCH = 'GET_SEARCH'
 const GET_REDIRECT = 'GET_REDIRECT'
+const MOB_SLIDE = 'MOB_SLIDE'
 
 
 //Action Builder
+export function mobSlide() {
+
+    return {
+        type: MOB_SLIDE
+    }
+}
+
 export function getRedirect(url) {
     let redirectData = url
 
@@ -130,6 +139,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { search: action.payload })
         case GET_REDIRECT:
             return Object.assign({}, state, { redirect: action.payload })
+        case MOB_SLIDE:
+            return Object.assign({}, state, { slide: !state.slide })
         default:
             return state
     }

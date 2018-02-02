@@ -210,7 +210,7 @@ body {
   outline: none;
 }
 
-.dropdown {
+.hamdisplay {
   display: none;
 }
 
@@ -555,6 +555,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .hammenu {
+  display: none;
+}
+
+.hammenubutton {
   display: none;
 }
 

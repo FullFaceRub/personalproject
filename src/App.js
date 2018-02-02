@@ -16,27 +16,21 @@ import MobileNav from './components/NavBar/MobileNav';
 import logo from './images/logo.png';
 import ham from './images/hamburger6.jpg';
 import routes from './routes';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import {mobSlide} from './ducks/reducer';
+import {connect} from 'react-redux';
 
 
 
 class App extends Component {
-  // constructor() {
-  //   super();
-
-  //   this.state = {
-  //     dropdown: "dropdown"
-  //   }
-
-  //   this.toggleExpand = this.toggleExpand.bind(this);
-  // }
-
-  // toggleExpand() {
-  //   let drop = this.state.dropdown === "dropdown" ? "dropdownexpanded" : "dropdown"
-  //   this.setState({
-  //     dropdown: drop
-  //   })
-  // }
+  constructor(){
+    super()
+    this.toggleSlide = this.toggleSlide.bind(this);
+  }
+  
+  toggleSlide(props){
+    this.props.mobSlide()
+  }
 
   render() {
     return (
@@ -53,9 +47,11 @@ class App extends Component {
           </Link>
           <NavBar />
           <Search />
-          <img src={ham} alt="menu" className="hammenu" />
+          <button onClick={_=>this.toggleSlide()} className="hammenubutton" >
+          <img src={ham} alt="menu" className="hammenu"  />
+          </button>
         </header>
-        <div className="dropdown">
+        <div className="hamdisplay">
           <MobileNav />
         </div>
       </div>
@@ -63,4 +59,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    slide: state.slide
+  }
+}
+
+export default withRouter(connect(mapStateToProps, {mobSlide})(App));
