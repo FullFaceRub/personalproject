@@ -281,9 +281,12 @@ body {
 }
 
 .backbutton {
-  position: absolute;
-  top: .4%;
-  right: 20%;
+  margin-top:-30px;
+  margin-bottom: 10px;
+  width: 70%;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 50px;
 }
 
 .backbutton:hover > .line {
@@ -429,9 +432,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .pbackbutton {
-  position: absolute;
-  top: 17%;
-  right: 22%;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding-right: 30px;
+  margin-top: -15px;
 }
 
 .pbackbutton:hover > .line {

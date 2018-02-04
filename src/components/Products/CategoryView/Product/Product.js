@@ -93,12 +93,14 @@ class Product extends Component {
         let productMap = this.props.product.map((e, i) => {
             let formatTotal = Number(e.product_price) ? "$" + e.product_price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") : "$0.00";
             return <div key={i} className="productdetail">
-                <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
                 <div>
                     <h1 className="productname">{e.product_name}</h1>
                     <img src={e.product_image} alt={e.product_name} className="productdetailimg" />
                 </div>
                 <div className="productdetailbody">
+                    <div className="pbackbutton">
+                        <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
+                    </div>
                     <div className="description">{e.product_description}</div>
                     <div className="productdetailprice">
                         <h1>Price: {formatTotal}</h1>

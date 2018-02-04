@@ -43,7 +43,9 @@ class CategoryView extends Component {
         })
         return (<div className="categoryView">
             <div className="catmain">
-            <Link to='/products' className="backbutton">Back to Categories<div className="line"></div></Link>
+            <div className="backbutton">
+            <Link to='/products'>Back to Categories<div className="line"></div></Link>
+                </div>
                 {list}
                 <div className="cartfooter"></div>
             </div>
