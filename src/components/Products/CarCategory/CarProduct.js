@@ -19,7 +19,7 @@ class Product extends Component {
     }
 
     googlesearch(){
-        window.location.assign(`https://www.google.com/search?q=${this.props.product.product_name}`)
+        window.location.assign(`https://www.google.com/search?q=bmw 5 series+near+me`)
     }
 
     render() {
