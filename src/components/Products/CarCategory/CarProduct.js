@@ -13,10 +13,6 @@ class Product extends Component {
         this.props.getRedirect(url);
     }
 
-    googlesearch(){
-        window.location=`https://www.google.com/search?q=${this.props.product.product_name}+near+me`
-    }
-
     render() {
         let productMap = this.props.product.map((e, i) => {
             return <div key={i} className="productdetail">
@@ -29,7 +25,7 @@ class Product extends Component {
                         <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products</Link>
                     </div>
                     <div className="description">{e.product_description}</div>
-                    <button className="dealerbutton" onClick={this.googlesearch()}>Find a Dealership Near You</button>
+                    <a href={`http://google.com/search?q=${e.product_name}+near+me`} className="dealerbutton">Find a Dealership Near You!</a>
                 </div>
             </div>
         })

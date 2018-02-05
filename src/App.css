@@ -1111,4 +1111,9 @@ button:active {
   color: silver;
   border-color: silver;
   outline: none;
+  width: 70%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
