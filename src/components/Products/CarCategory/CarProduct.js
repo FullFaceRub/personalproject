@@ -4,11 +4,6 @@ import { getUserInfo, getProduct, getRedirect, getCart } from '../../../ducks/re
 import { Link } from 'react-router-dom';
 
 class Product extends Component {
-    constructor(){
-        super();
-
-        this.googlesearch=this.googlesearch.bind(this);
-    }
 
     componentDidMount() {
         this.props.getUserInfo();
@@ -19,7 +14,7 @@ class Product extends Component {
     }
 
     googlesearch(){
-        window.location.assign(`https://www.google.com/search?q=bmw 5 series+near+me`)
+        window.location=`https://www.google.com/search?q=${this.props.product.product_name}+near+me`
     }
 
     render() {
