@@ -470,6 +470,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .productsubnav {
   text-decoration: none;
+  background: none;
   color: silver;
   border: solid;
   border-color: silver;

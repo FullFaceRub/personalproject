@@ -18,7 +18,7 @@ export default (
         <Route exact path='/' component={Home}/>
         <Route path='/about' component={About}/>
         <Route exact path='/products' component={Products}/>
-        <Route exact distinct path='/product/:product' component={Product}/>
+        <Route exact distinct path='/product/:product/' component={Product}/>
         <Route path='/inspiration' component={Inspiration}/>
         <Route exact path='/products/4' component={CarsView}/>
         <Route path='/products/:category' component={CategoryView} />

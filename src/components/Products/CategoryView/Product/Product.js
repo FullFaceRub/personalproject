@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo, getProduct, getRedirect, getCart } from '../../../../ducks/reducer';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import { Dimensions, Reviews, Features } from './ProductTabs';
 
 class Product extends Component {
@@ -10,12 +10,14 @@ class Product extends Component {
         super();
 
         this.state = {
-            quantity: 0
+            quantity: 0,
+            productTab: 'features'
         }
         this.addToCart = this.addToCart.bind(this);
         this.inputQuantity = this.inputQuantity.bind(this);
         this.increase = this.increase.bind(this);
         this.decrease = this.decrease.bind(this);
+        this.handleTab = this.handleTab.bind(this);
     }
 
     componentDidMount() {
@@ -80,14 +82,20 @@ class Product extends Component {
         })
     }
 
+    handleTab(e){
+        this.setState({
+            productTab: e
+        })
+    }
+
     render() {
         let { product } = this.props
         let detailTab;
-        if (this.props.location.pathname.includes("dimensions")) {
+        if (this.state.productTab == 'dimensions') {
             detailTab = <Dimensions dimensions={product[0].product_dimensions} />
-        } else if (this.props.location.pathname.includes("reviews")) {
+        } else if (this.state.productTab == 'reviews') {
             detailTab = <Reviews />
-        } else if (this.props.location.pathname.includes("features") || this.props.location.pathname.includes("product")) {
+        } else if (this.state.productTab == 'features') {
             detailTab = this.props.product.length > 0 ? <Features features={product[0].product_features} /> : null
         }
         let productMap = this.props.product.map((e, i) => {
@@ -115,11 +123,13 @@ class Product extends Component {
                     </div>
                     <div className="detailtable">
                         <div className="producttabs">
-                            <Link to={`/product/${e.product_id}/features`} className="productsubnav">Features:</Link>
-                            <Link to={`/product/${e.product_id}/dimensions`} className="productsubnav">Dimensions:</Link>
-                            <Link to={`/product/${e.product_id}/reviews`} className="productsubnav">Reviews:</Link>
+                            <button onClick={()=>this.handleTab('features')} className="productsubnav">Features:</button>
+                            <button onClick={()=>this.handleTab('dimensions')} className="productsubnav">Dimensions:</button>
+                            <button onClick={()=>this.handleTab('reviews')} className="productsubnav">Reviews:</button>
                         </div>
-                        <div className="detailtab">{detailTab}</div>
+                        <div className="detailtab">
+                            {detailTab}
+                        </div>
                     </div>
                 </div>
             </div>
