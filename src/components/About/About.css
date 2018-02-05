@@ -1,17 +1,87 @@
+.timeline {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
 .dot {
     width: 25px;
     height: 25px;
-    background: silver;
+    background: black;
+    border: solid;
+    border-width: 1px;
+    border-color: white;
+    color: white;
     border-radius: 50%;
     opacity: .75;
-    font-size: 11px;
-    text-align: center;
-    color: black;
-    font-weight: bold;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    overflow: hidden;
 }
 
-.dot:nth-child(1) {
-    position: absolute;
-    top: 300px;
-    left: 100px;
+.eventdot {
+    background: black;
+    border: solid;
+    border-width: 2px;
+    border-color: white;
+    color: white;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    opacity: .75;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event {
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.eventline {
+    width: 100px;
+    height: 1px;
+    background: white;
+    margin-left: 20px;
+}
+
+.eventbody {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 70%;
+}
+
+.eventimg {
+    height: 200px;
+}
+
+.eventtext {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40%;
+    margin-left: 25px;
+}
+
+.eventtext h1 {
+    font-size: 20px;
+
+}
+
+.eventtext div {
+    font-size: 13px;
+    font-weight: lighter;
+    line-height: 18px;
+}
+
+.aboutfooter {
+    height: 200px;
 }

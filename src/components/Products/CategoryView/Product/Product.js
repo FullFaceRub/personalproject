@@ -99,7 +99,7 @@ class Product extends Component {
                 </div>
                 <div className="productdetailbody">
                     <div className="pbackbutton">
-                        <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products<div className="line"></div></Link>
+                        <Link to={`/products/${e.category_id}`} className="pbackbutton">Back to Products</Link>
                     </div>
                     <div className="description">{e.product_description}</div>
                     <div className="productdetailprice">

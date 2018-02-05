@@ -148,13 +148,8 @@ body {
 }
 
 .subnav {
-  width: 100px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: -9%;
-  left: 25%;
-  margin-top: 10px;
 }
 
 .subnavlinks {
@@ -162,6 +157,7 @@ body {
   color: silver;
   font-family: 'Abel', sans-serif;
   font-size: 16px;
+  margin-left: 20px;
 }
 
 .subnavlinks:hover > .line {
@@ -418,8 +414,8 @@ body {
   border-width: 1px;
   border-color: silver;
   padding-bottom: 25px;
-  /* padding-left: 15px; */
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .productdetail a {
@@ -531,13 +527,14 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .content {
-  width: 65%;
+  width: 75%;
   line-height: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: rgba(0,0,0,.75); 
   position: relative;
+  margin-top: -40px;
 }
 
 .content p {
@@ -548,6 +545,7 @@ input[type=number]::-webkit-inner-spin-button {
   font-size: 25px;
   width: 100%;
   align-content: left;
+  margin-top: 25px;
 }
 
 .account {
@@ -1101,3 +1099,16 @@ button:active {
   }
 }
 
+.caraudiotile {
+  justify-content: space-around;
+}
+
+.dealerbutton {
+  background: black;
+  border-radius: 25px;
+  border: solid;
+  border-width: 1px;
+  color: silver;
+  border-color: silver;
+  outline: none;
+}
