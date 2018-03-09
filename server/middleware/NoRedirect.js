@@ -9,7 +9,7 @@ module.exports = {
 
     authenticate: (req,res,next)=>{
         let auth = passport.authenticate('auth0', {
-            successRedirect: `${req.session.redirect}`,
+            successRedirect: `${process.env.REDIRECT_STRING}#${req.session.redirect}`,
             failureRedirect: `${process.env.REDIRECT_STRING}failedlogin`,
         })
 

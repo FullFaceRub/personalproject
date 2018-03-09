@@ -92,9 +92,6 @@ app.get('/api/orderhistory/:user', controller.getOrders);// This endpoint retrie
 app.put(`/api/cart/:user/:product/:quantity`, controller.updateCart)
 
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
 //***************************************************************************/
 app.listen(port, () => {
     console.log(`That's no moon! It's a port ${port}`)
