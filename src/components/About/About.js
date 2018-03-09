@@ -10,7 +10,7 @@ import './About.css';
 class About extends Component {
 
     componentDidMount() {
-        let url = this.props.location.pathname
+        let url = window.location.pathname
         this.props.getRedirect(url);
     }
 

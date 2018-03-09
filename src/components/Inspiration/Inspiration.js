@@ -37,7 +37,7 @@ class Inspiration extends Component {
         }
     }
     componentDidMount(){
-        let url = this.props.location.pathname
+        let url = window.location.pathname
         this.props.getRedirect(url);
     }
 

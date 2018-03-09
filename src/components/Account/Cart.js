@@ -17,7 +17,7 @@ class Cart extends Component {
         let user = this.props.user.customer_id;
         this.props.getUserInfo();
         this.props.getCart(user);
-        let url = this.props.location.pathname
+        let url = window.location.pathname
         this.props.getRedirect(url);
         let cart = this.props.cart;
         let total = cart[1].length < 1 ? 0 : cart[1][0].total;

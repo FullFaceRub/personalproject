@@ -24,7 +24,7 @@ class Product extends Component {
         this.props.getUserInfo();
         let product = this.props.match.params.product
         this.props.getProduct(product);
-        let url = this.props.location.pathname
+        let url = window.location.pathname
         this.props.getRedirect(url);
     }
 

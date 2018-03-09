@@ -9,7 +9,7 @@ class Account extends Component {
 
     componentDidMount() {
         this.props.getUserInfo();
-        let url = this.props.location.pathname
+        let url = window.location.pathname
         this.props.getRedirect(url);
     }
 
