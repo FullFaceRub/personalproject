@@ -91,6 +91,10 @@ app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);//
 app.get('/api/orderhistory/:user', controller.getOrders);// This endpoint retrieves orderhistory of a customer based on their user id.
 app.put(`/api/cart/:user/:product/:quantity`, controller.updateCart)
 
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 //***************************************************************************/
 app.listen(port, () => {
     console.log(`That's no moon! It's a port ${port}`)
