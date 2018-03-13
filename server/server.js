@@ -1,18 +1,24 @@
+//Declarations
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = new express();
 const port = 8080;
-const controller = require('./controllers/bwcontroller');
 const cors = require('cors');
 const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const noredirect = require('./middleware/NoRedirect');
-const paymentcontroller = require('./controllers/paymentcontroller');
 
+//Controllers
+const paymentcontroller = require('./controllers/paymentcontroller');
+const controller = require('./controllers/bwcontroller');
+
+//Custom middleware
+const noredirect = require('./middleware/NoRedirect');
+
+//Top-level middleware
 app.use(express.static(`${__dirname}/../build`));
 app.use(cors());
 app.use(bodyParser.json());
@@ -28,6 +34,8 @@ app.use(passport.session());
 massive(process.env.CONNECTION_STRING).then((db) => {
     app.set('db', db);
 })
+
+//Auth Strategy
 passport.use(new Auth0Strategy({
     domain: process.env.DOMAIN,
     clientID: process.env.CLIENT_ID,
@@ -36,9 +44,10 @@ passport.use(new Auth0Strategy({
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
 
-    let { displayName, picture, user_id } = profile; //deconstruct items from profile object
+    let { displayName, picture, user_id } = profile; //deconstruct items from google profile object
     const db = app.get('db'); //connect database
 
+    //Function checks to see if customer already exists. If customer doesn't exist in the database, adds customer to database. Otherwise, continues with login.
     db.readcustomer([user_id]).then(function (customers) {
         if (!customers[0]) {
             db.addcustomer([displayName, user_id])
@@ -62,6 +71,7 @@ passport.deserializeUser((id, done) => {
             return done(null, user[0])
         })
 })
+
 //Auth endpoints
 app.get('/auth', noredirect.NoRedirect, passport.authenticate('auth0'));
 app.get('/auth/callback', noredirect.authenticate);
@@ -76,20 +86,25 @@ app.get('/auth/logout', function (req, res) {
     req.logOut();
     res.redirect('/')
 })
+
 //Payment endpoint
 app.post('/api/payment', paymentcontroller.payment);// This endpoint also creates an invoice on the invoices table
-//Endpoints
+
+//Product Endpoints
 app.get('/api/products/:category', controller.getCategory);// This endpoint retrieves the data for CategoryView component
 app.get('/api/product/:productid', controller.getProduct);// This endpoint retrieves the data for Product component
 app.get('/api/products/search/:query', controller.searchProduct);// This endpoint retrieves the data for SearchResults component
+
+//Cart Endpoints
 app.post('/api/cart/:user/:productid/:quantity', controller.addToCart);// This endpoint adds a product and quantity to a customer's cart
 app.get('/api/cart/:user', controller.getCart);// This endpoint retrieves the data for a particular customer's Cart component
 app.get('/api/cartTotal/:user', controller.getCartTotal);// This endpoint uses a join to derive the Total cost of a customer's Cart and sends that to the Cart component
 app.put('/api/cartquantity/:user/:productid/:quantity', controller.changeQuantity);// This endpoint serves both the Increment and Decrement functions in the Cart component
-app.get('/api/inspiration', controller.getInspired);// This endpoint retrieves the data for the Inspiration component
 app.delete('/api/deletecartitem/:user/:productid', controller.removeFromCart);// This endpoint removes an item from the Cart component if its quantity reaches 0
+app.put(`/api/cart/:user/:product/:quantity`, controller.updateCart)// This endpoint updates quantities in the cart for the customer and removes them from the cart if quantity reaches 0
+
+//Account Endpoints
 app.get('/api/orderhistory/:user', controller.getOrders);// This endpoint retrieves orderhistory of a customer based on their user id.
-app.put(`/api/cart/:user/:product/:quantity`, controller.updateCart)
 
 
 //***************************************************************************/

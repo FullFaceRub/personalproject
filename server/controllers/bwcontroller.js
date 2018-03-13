@@ -60,10 +60,7 @@ module.exports = {
             for (var i = 0; i < carts.length; i++) {
                 if (carts[i].customer_id == user && carts[i].product_id == product) {
                     newQty = Number(quantity) + Number(carts[i].quantity)
-
-
                 }
-
             }
             if (newQty) {
                 db.changeQuantity([+user, +product, +newQty]).then((qty) => {
@@ -83,6 +80,7 @@ module.exports = {
         const quantity = Number(req.params.quantity);
         const db = req.app.get('db');
         var data = {};
+
         db.changeQuantity([+user, +product, +quantity]).then((quantity) => {
             db.getCart([+user]).then((cart) => {
                 db.getCartTotal([+user]).then((total) => {
@@ -99,6 +97,7 @@ module.exports = {
         const product = req.params.productid;
         const db = req.app.get('db');
         var data = {};
+
         db.removeFromCart([+user, +product]).then((quantity) => {
             db.getCart([+user]).then((cart) => {
                 db.getCartTotal([+user]).then((total) => {
@@ -107,14 +106,6 @@ module.exports = {
                     res.status(200).send(data);
                 })
             })
-        })
-    },
-
-    getInspired: (req, res) => {
-        const db = req.app.get('db');
-
-        db.getInspired().then((inspiration) => {
-            res.status(200).send(inspiration)
         })
     },
 
@@ -147,8 +138,6 @@ module.exports = {
                     quantity: ordersArr[i].quantity
                 })
             }
-
-
             res.status(200).send(results)
         })
     },
@@ -156,7 +145,7 @@ module.exports = {
     updateCart: (req, res, next) => {
         const db = req.app.get('db');
         const { user, product, quantity } = req.params;
-
+        
         db.updateCart([user, product, quantity]).then((cart) => {
             res.status(200).send(cart)
         })

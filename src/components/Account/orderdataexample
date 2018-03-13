@@ -1,4 +1,5 @@
-[{
+[
+    {
     invoiceDate:"2018-01-18T07:00:00.000Z",
     invoiceNumber:11,
     invoicelines:[
@@ -24,5 +25,9 @@
             quantity:1
         }
     ],
-    total:"31999.96"},
-    {},...]
+    total:"31999.96"
+    },
+
+    {},
+    ...
+]
