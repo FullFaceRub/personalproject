@@ -23,23 +23,6 @@ Live URL: [Audiophile](https://audiophile.dan-bury.com/)
   - [Account](#account)
   - [Cart](#cart)
   - [Checkout](#checkout)
-- [Redux](#redux)
-  - [Redirect Function](#redirect-function)
-  - [User Info Function](#user-info-function)
-  - [Product Function](#product-function)
-  - [Cart Function](#cart-function)
-  - [Increment Cart Function](#increment-cart-function)
-  - [Decrement Cart Function](#decrement-cart-function)
-  - [Search Function](#search-function)
-- [Server](#server)
-  - [dotenv](#dotenv)
-  - [express](#express)
-  - [cors](#cors)
-  - [massive](#massive)
-  - [passport](#passport)
-  - [Auth0Strategy](#auth0strategy)
-  - [session](#session)
-  - [stripe](#stripe)
 - [Payment Controller Endpoints](#payment-controller-endpoints)
   - [Payment](#payment)
 - [BW Controller Endpoints](#bw-controller-endpoints)
@@ -51,15 +34,7 @@ Live URL: [Audiophile](https://audiophile.dan-bury.com/)
   - [Get Cart Total](#get-cart-total)
   - [Change Quantity](#change-quantity)
   - [Remove from Cart](#remove-from-cart)
-  - [Update Cart](#update-cart)
   - [Get Orders](#get-orders)
-- [Custom Middleware](#custom-middleware)
-  - [NoRedirect](#noredirect)
-- [Auth0 Endpoints](#auth0-endpoints)
-  - [Login](#login)
-  - [Callback](#callback)
-  - [Me](#me)
-  - [Logout](#logout)
 - [Database Queries](#database-queries)
   - [addcustomer](#addcustomer)
   - [addtocart](#addtocart)
@@ -228,3 +203,173 @@ The [Checkout](#checkout) button is only displayed if there are items in the car
 The Checkout button launches a modal through the library `react-modal`. The modal shows a shipping information form as well as the order total that is received through props from the Cart and [Redux](#redux). At the bottom of the form, a button `Pay with Card` is shown that launches the `onToken` method for `-react-stripe-checkout`. It is disabled until all shipping information fields are filled in. Once payment information is entered and the pay button on the Stripe Token is clicked, a progress modal opens while the payment is processed. Upon successful payment, a new success modal opens thanking the user for the order and the cart is cleared.
 
 If you would like to test this process, please fill in the shipping information with anything that you would like. For the email field for stripe enter in `d@d.com`. Card number `4242 4242 4242 4242`. Expiration can be any future date and and 3 digit code for the security number.
+
+## Payment Controller Endpoints
+
+### `Payment`
+
+This endpoint receives shipping information, customer cart and order total from `req.body`. It generates a date for the order, converts the total to pennies,  and sends the amount of pennies to my `Stripe` account. It will also invoke a few database functions:
+
+* [createinvoice](#createinvoice)
+* [createinvoiceline](#createinvoiceline)
+* [clearcart](#clearcart)
+* [getcart](#getcart)
+* [getcarttotal](#getcarttotal)
+
+## BW Controller Endpoints
+
+### `Get Category`
+
+Receives `category id` from `req.params` and returns an array of products through invoking a database function:
+
+* [readproductcategory](#readproductcategory)
+
+### `Get Product`
+
+Receives `product id` from `req.params` and returns a product object through invoking a database function:
+
+* [readsingleproduct](#readsingleproduct)
+
+### `Search Product`
+
+Receives a query from `req.params`, standardizes capitalization and returns an array of products through invoking a database function:
+
+* [searchreadproduct](#searchreadproduct)
+
+### `Get Cart`
+
+Receives `user id` from `req.params` and returns a cart array of product objects through invoking a database function:
+
+* [getcart](#getcart)
+
+### `Get Cart Total`
+
+Receives `user id` from `req.params` and returns a total through invoking a database function:
+
+* [getcarttotal](#getcarttotal)
+
+### `Add to Cart`
+
+Receives `user id`, `product id`, and `quantity` from `req.params`. It first invokes [getcart](#getcart) from the database to see if the `product id` is in the cart. If it is, it invokes [changequantity](#changequantity) on the database. Otherwise, it invokes [addtocart](#addtocart) as a database function.
+
+### `Change Quantity`
+
+Receives `user id`, `product id`, and `quantity` from `req.params`. It updates the quantity of a certain product in a user's cart and returns the cart from the database by invoking the following database functions:
+
+* [changequantity](#changequantity)
+* [getcart](#getcart)
+* [getcarttotal](#getcarttotal)
+
+### `Remove from Cart`
+
+Receives `user id` and `product id` from `req.params`. It returns a new cart after removing an item from the cart by invoking database functions:
+
+* [removefromcart](#removefromcart)
+* [getcart](#getcart)
+* [getcarttotal](#getcarttotal)
+
+### `Get Orders`
+
+Receives `user id` from `req.params` and returns that user's past orders.
+
+First it invokes a database function [getinvoices](#getinvoices) that returns and array of invoicelines. The function loops through the array. With each instance, it groups all invoicelines based on `invoice id`, creates a new invoice object, and pushes each invoiceline to that invoice object under the key invoicelines. It then pushes the invoice object with the invoicelines array inside of it to a results array and returns that to the frontend. The resulting data structure is:
+
+```
+[
+  {
+  invoiceDate:"2018-01-18T07:00:00.000Z",
+  invoiceNumber:11,
+  invoicelines:[
+      {
+          image:"/images/2.png",
+          invoiceLine:29,
+          price:null,
+          product:"800 D3",
+          quantity:2
+      },
+      {
+          image:"/images/17.jpg",
+          invoiceLine:30,
+          price:null,
+          product:"HTM72 S2",
+          quantity:1
+      },
+      {
+          image:"/images/15.jpg",
+          invoiceLine:31,
+          price:null,
+          product:"707 S2",
+          quantity:1
+      }
+  ],
+  total:"31999.96"
+  },
+  {},
+  ...
+]
+``` 
+
+## Database Queries
+
+#### `addtocart`
+
+Inserts into the carts table the `user id`, `product id` and `quantity`.
+
+#### `buildcartstable`
+
+Seed file for carts table.
+
+#### `buildcategories`
+
+Seed file for categories table.
+
+#### `buildproductdatabase`
+
+Seed file for products table.
+
+#### `changequantity`
+
+Updates `quantity` of carts table where the `user id` and `product id` match the variables passed into the function.
+
+#### `createinvoice`
+
+Inserts into the invoices table the customer, shipping information, date, and total. The `.then` of this function loops through the cart and invokes other database functions for each line to create invoice lines, clear the cart, and get the cart again to display on the front end.
+
+#### `createinvoiceline`
+
+For each cart line, this database function inserts a new line into the invoicelines table. It ties each line to the `invoice id` from the previous `createinvoice` function and inserts the `product id` and `quantity` from the cart.
+
+#### `clearcart`
+
+Deletes from carts table based on `customer id`.
+
+#### `getcart`
+
+Selects from carts table based on `customer id` and joins with products table on `product id`.
+
+#### `getcarttotal`
+
+Joins products table and carts table on `product id`.
+Sums the product of `product price` and `quantity`  based on  `product id`. Returns result based on `user id`.
+
+#### `getinvoices`
+
+Joins products table and invoicelines table on `product id`.
+Joins invoicelines table and invoices table on `invoice id`.
+Returns result based on `user id`.
+
+#### `readproductcategory`
+
+Selects from products table based on `category id`
+
+#### `readsingleproduct`
+
+Selects from products table based on `product id`
+
+#### `removefromcart`
+
+Deletes item from carts table based on `user id` and `product id`
+
+#### `searchreadproduct`
+
+Selects from products table where `product name` or `product description` are like the variables passed in to function.
